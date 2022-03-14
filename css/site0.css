@@ -1,0 +1,68 @@
+#pointer0
+{
+    color: black;
+    font-weight: bolder;
+}
+
+#head-box
+{
+    width: 150px;
+    height: 150px;
+}
+
+#head
+{
+    padding: 0;
+    margin: 0% 2%;
+    max-width:150px;
+}
+
+#head-box:hover
+{
+    padding: 1px;
+}
+
+#head:hover
+{
+    width: 149px;
+    height: 149px;
+}
+
+#profile
+{
+    margin-bottom: 2%;
+    border-bottom: 2px solid #ccc;
+}
+
+#info
+{
+    /* width: 32vh; */
+    width: 35vh;
+    height: auto;
+    margin-bottom: 0;
+    /* margin-top: 20px; */
+    margin-left: 2.6vh;
+    padding-top: 1%;
+    position: relative;
+    /* font-size: 2.5vh; */
+    font-size: auto;
+    line-height: auto;
+}
+
+#info-txt
+{
+    height: auto;
+    margin: 0;
+    position: absolute;
+    
+    top: 5.5vh;
+    /* bottom: auto; */
+}
+
+
+
+.live2d {
+    position: fixed;
+    bottom : 0;
+    left : 0;
+}

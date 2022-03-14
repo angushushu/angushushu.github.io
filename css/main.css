@@ -1,0 +1,49 @@
+body
+{
+    margin: 0px;
+    font-family: "Courier New", Courier, monospace!important;
+}
+
+
+#particles-js
+{
+    /* height: 100%; */
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #fff;
+    position: fixed;
+    /* z-index: 0; */
+}
+
+#page
+{
+    height: auto;
+    padding-top: 5%;
+    -webkit-text-size-adjust: auto;
+    /* z-index: 1; */
+}
+
+#content
+{
+    position: relative;
+    margin-top: 3%;
+    padding: .5rem 1rem;
+}
+
+.navbar.navbar-expand-md.navbar-light
+{
+    padding-bottom: 0;
+}
+
+.navbar-toggler
+{
+    min-height: 80px;
+    min-width: 100%;
+}
+
+.nav-link
+{
+    font-size: 2vh;
+}

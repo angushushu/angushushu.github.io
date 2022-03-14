@@ -1,0 +1,141 @@
+<!doctype html>
+<head>
+    <meta charset="UTF-8">
+    <title>Shu-Models</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/site1.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+</head>
+<body>
+    <div id="particles-js"></div> 
+    <div id="page" class="mx-auto col-lg-8 col-md-10 col-sm-12">
+        <nav class="navbar navbar-expand-lg navbar-light main-navigation">
+            <!-- <a href="#" class="navbar-brand">Shu's site</a> -->
+            <button
+                class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#toggleMobileMenu"
+                aria-controls="toggleMobileMenu"
+                aria-expanded="false"
+                aria-labek="Toggle navigation"
+            >
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="toggleMobileMenu">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a href="../index.html" class="nav-link" id="pointer0">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="site1.html" class="nav-link" id="pointer1">MODELS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="site2.html" class="nav-link" id="pointer2">Writings</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div id="content">
+            <div id="models">
+                <h5 class="noselect" style="font: 3vh;"><b>1. Constant Goal Graph</b></h5>
+                    <div class="model-intro">
+                        - <b>a. Static Structure</b><br>
+                        -- <b>i. S-A Structure</b><br>
+                        --- <b>1. State</b><br>
+                        A state is a set of representations, describes the momentary feeling of one individual. <br>
+                        ---- <b>a) Representation</b><br>
+                            Representation is a set of Representation Units. <br>
+                            Ex. Say a, b, c are 3 Representation Units, then the discrete topology of {a,b,c} will be a subset of the Representations that can be induced from them. <br>
+                        ---- <b>b) Representation Unit</b><br>
+                            The representation unit is the minimal element that constructs a representation. The basic form can be a sensation signal.
+                            A representation itself can be a representation unit. <br>
+                            Ex. If we have sensation signals a,b,c, {a, {a,b,c}} is a valid representation. <br>
+                        ---- <b>c) Goal</b><br>
+                            A representation R is a Goal if it's a destination in the graph. A graph can have multiple destinations. <br>
+                        ----- <b>i) Constant goal</b><br>
+                                The goals in Constant Goal Graph are static. <br>
+                                Comment: the Constant Goal Graph was initially used to explain an organism's needs. Thus the Constant Goals are considered as states that need are satisfied. <br>
+                        --- <b>2. Action</b><br>
+                        An Action is a path of the S-A Graph, i.e., a series of Action and State. It reflects one's physical and mental activity. <br>
+                        ---- <b>a) Action Unit</b><br>
+                            An action unit is a minimal element that constitutes an action. <br>
+                            Ex1. To study facial expression, we can set the contraction of a piece of facial muscle as the action unit. <br>
+                            Ex2. Say a1 is an action unit, and s1 is a state. Then a1->s1->a1 and a1 are all actions. <br>
+                        ----- <b>i) Single thread action</b><br>
+                                A Single Thread Action indicates that it activates only one action unit at each moment. <br>
+                        ----- <b>ii) Multi thread action</b><br>
+                                A Multi Thread Action is an action that involves multiple threads of actions at some moment, i.e., when performing the action, 
+                                there exists a time s.t. there is more than one action unit within the compound action activated. <br>
+                        ----- <b>iii) Physical action unit</b><br>
+                                Physical action units are the action unit (simple neural activities) that generate a physiological change (general speaking). <br>
+                                Ex. A muscle contraction, but not a neuron's activation. <br>
+                        ----- <b>iv) Cognitive action unit</b><br>
+                        A Cognitive action unit is the action unit that generates a simple cognitive process. <br>
+                        ---- <b>b) Repeat action?</b><br>
+                            Comment: Since neural circuits generate cognitive processes, it would be hard to find the smallest circuit. <br>
+                            The action unit can be defined by the model designer when a model is set up. However, to give a sense of it, 
+                            we can consider a cognitive action unit as the smallest possible neural circuit that has a cognitive function. <br>
+                        --- <b>3. Direction graph</b><br>
+                        S-A graphs are directed. The direction represents the temporal order of states perceived. <br>
+                        Ex. A simplest S-A graph is shown below. <br>
+                        <p class="aligncenter"><img src="../imgs/img1.png" alt="simplest S-A graph" style="width:300px; margin: 10px;"></p>
+                        ---- <b>a) Goal-centered S-A graph</b><br>
+                            A goal-centered S-A graph is an S-A graph that contains goal(s). <br>
+                            <!-- <img src="../imgs/img2.png" alt="Example of simple Goal-centered S-A graph" style="width:300px; margin: 10px;" align="right"> <br> -->
+                            <p class="aligncenter"><img src="../imgs/img2.png" alt="Example of simple goal-centered S-A graph" style="width:300px; margin: 10px;"></p>
+                            Ex1. An example of a simple goal-centered S-A graph is shown above. The nodes in the red circle are goals. <br>
+                            <p class="aligncenter"><img src="../imgs/img3.png" alt="Example of multi-layer goal-centered S-A graph" style="width:300px; margin: 10px;"></p>
+                            Ex2. With this design, we can construct multi-layer goal-centered S-A graph (shown above). Each red circle indicates the center of one layer.<br>
+                        ---- <b>b) Non-goal S-A graph</b><br>
+                            A non-goal S-A graph is an S-A graph without a goal. 
+                            It still has destinations of paths, but these only represent the last state perceived after a series of actions. <br>
+                        -- <b>ii. R-R Structure</b><br>
+                        An R-R graph is a graph of representations s.t. for two connected representations, we can always access one from another. <br>
+                        Comment: While S-A graphs with a single direction can represent procedural, episodic memory, and some types of semantic memory, 
+                        certain types of semantic memory can not be represented by single direction graphs. Thus we use non-directed. <br>
+                        --- <b>1) Non-directed graph</b><br>
+                        A non-directed graph is a graph s.t. for any two connected representations, the edge between them contains nothing. 
+                        This is the general form of R-R structure and by applying it, we can integrate the S-A structure with the traditional associative network. 
+                        Two possible concepts can be represented using the R-R structure: <br>
+                        ---- <b>a) Priming</b><br>
+                        ---- <b>b) Mirror Neurons</b><br>
+                        -- <b>iii. Unit Storage</b><br>
+                        By definition, representations can be generated by representations and actions can be generated by actions. 
+                        This indicates that, for one representation or action, there normally is a set of representations or actions related to it. 
+                        There are two methodologies to describe such a relationship. One is through connectionism: R-R structure for representation. 
+                        Another one is to create a space that records the connection between finer representation/action and coarser representation/action. <br>
+                        Comment: This is not an important concept since it would not affect how the model work, it just provides an idea of how to implement the model. <br>
+                    </div>
+                <h5 class="noselect" style="font: 3vh;"><b>2. Contemporal Goal Graph</b></h5>
+                <h5 class="noselect" style="font: 3vh;"><b>3. Spatial Representation Graph</b></h5>
+                <h5 class="noselect" style="font: 3vh;"><b>4. Avoidance Graph</b></h5>
+                <h5 class="noselect" style="font: 3vh;"><b>5. Expectation Graph</b></h5>
+                <h5> To be continue...</h5>
+            </div>
+            <script type="text/javascript">
+                (function(){
+                    var navWrap=document.getElementById("models");
+                    var nav1s=navWrap.getElementsByTagName("h5");
+                    var nav2s=navWrap.getElementsByTagName("div");
+                    for(var i=0,len=nav1s.length;i<len;i++){
+                            nav2s[i].style.display="none"
+                            nav1s[i].onclick=(function(i){
+                                return function(){
+                                    nav2s[i].style.display=nav2s[i].style.display=="block"?"none":"block"
+                                }
+                            })(i)
+                        }
+                    })()
+            </script>
+        </div>
+    </div>
+    
+    <!-- script -->
+    <script type="text/javascript" src="../js/particles.js"></script>
+    <script type="text/javascript" src="../js/app.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+</body>
+</html>
