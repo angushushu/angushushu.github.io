@@ -2,9 +2,9 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://angushushu.com/2024/10/26/Better-Understanding-Dot-Product-hints/</loc>
+    <loc>http://angushushu.com/</loc>
     
-    <lastmod>2024-10-30</lastmod>
+    <lastmod>2025-10-14</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -13,7 +13,16 @@
   <url>
     <loc>http://angushushu.com/writings/</loc>
     
-    <lastmod>2024-10-27</lastmod>
+    <lastmod>2025-10-14</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://angushushu.com/2024/10/26/Better-Understanding-Dot-Product-hints/</loc>
+    
+    <lastmod>2024-10-30</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -30,15 +39,6 @@
   
   <url>
     <loc>http://angushushu.com/2021/12/31/playlists/</loc>
-    
-    <lastmod>2024-02-23</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://angushushu.com/</loc>
     
     <lastmod>2024-02-23</lastmod>
     
@@ -103,7 +103,7 @@
 
   <url>
     <loc>http://angushushu.com/</loc>
-    <lastmod>2024-10-30</lastmod>
+    <lastmod>2025-10-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -111,35 +111,35 @@
   
   <url>
     <loc>http://angushushu.com/tags/math/</loc>
-    <lastmod>2024-10-30</lastmod>
+    <lastmod>2025-10-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://angushushu.com/tags/skill/</loc>
-    <lastmod>2024-10-30</lastmod>
+    <lastmod>2025-10-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://angushushu.com/tags/theory/</loc>
-    <lastmod>2024-10-30</lastmod>
+    <lastmod>2025-10-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://angushushu.com/tags/model/</loc>
-    <lastmod>2024-10-30</lastmod>
+    <lastmod>2025-10-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://angushushu.com/tags/thoughts/</loc>
-    <lastmod>2024-10-30</lastmod>
+    <lastmod>2025-10-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
