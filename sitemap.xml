@@ -110,6 +110,13 @@
 
   
   <url>
+    <loc>http://angushushu.com/tags/math/</loc>
+    <lastmod>2025-10-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>http://angushushu.com/tags/skill/</loc>
     <lastmod>2025-10-19</lastmod>
     <changefreq>weekly</changefreq>
@@ -125,13 +132,6 @@
   
   <url>
     <loc>http://angushushu.com/tags/model/</loc>
-    <lastmod>2025-10-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://angushushu.com/tags/math/</loc>
     <lastmod>2025-10-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
