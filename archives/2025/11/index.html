@@ -13,7 +13,7 @@
   
   <title>
     
-      Build &amp; Publish a Python Package 
+      Blog: 2025/11 
       
       
       |
@@ -109,187 +109,132 @@
 
 
       <div class="flex-container">
-        <!-- 文章详情页，展示文章具体内容，url形式：https://yoursite/文章标题/ -->
-<!-- 同时为「标签tag」，「朋友friend」，「分类categories」，「关于about」页面的承载页面，具体展示取决于page.type -->
+        <!-- 归档页，展示本站所有文章，按照年份降序归类，url形式：https://yoursite/archives/ -->
 
+<!-- last: 按年份把文章分组，当前遍历到的年份 -->
+<!-- now: 当前遍历到的文章的发布年份 -->
 
-  <!-- LaTex Display -->
-
-  
-    <script async type="text/javascript" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
-  
-  <script>
-    MathJax = {
-      tex: {
-        inlineMath: [['$', '$'], ['\\(', '\\)']]
-      }
-    }
-  </script>
-
-
-
-
-
-  <!-- clipboard -->
-
-  
-    <script async type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.10/dist/clipboard.min.js"></script>
-  
-  
-<script src="/js/codeCopy.js"></script>
-
-
-
-
-
-
-
-  
-
-  
-  <!-- 文章内容页 url形式：https://yoursite/文章标题/ -->
-  <div class="container post-details" id="post-details">
-    <div class="post-content">
-      <div class="post-title">Build & Publish a Python Package</div>
-      <div class="post-attach">
-        <span class="post-pubtime">
-          <i class="iconfont icon-updatetime mr-10" title="Update time"></i>
-          2025-11-27 14:20:43
-        </span>
-        
-              <span class="post-tags">
-                <i class="iconfont icon-tags mr-10" title="Tags"></i>
-                
-                <span class="span--tag mr-8">
-                  <a href="/tags/skill/" title="skill">
-                    #skill
-                  </a>
-                </span>
-                
-              </span>
-          
-      </div>
-      <div class="markdown-body">
-        <h2 id="Build"><a href="#Build" class="headerlink" title="Build"></a>Build</h2><p>Prepare setup.py<br>An example:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">from setuptools import find_packages, setup</span><br><span class="line">import os</span><br><span class="line">  </span><br><span class="line">with open(&quot;README.md&quot;, &quot;r&quot;) as f:  </span><br><span class="line">    long_description = f.read()  </span><br><span class="line">  </span><br><span class="line">setup(  </span><br><span class="line">    name=&#x27;&lt;package&gt;&#x27;,  </span><br><span class="line">    version=&#x27;0.0.1&#x27;,  </span><br><span class="line">    description=&#x27;&#x27;,  </span><br><span class="line">    packages=find_packages(include=[&#x27;&lt;package&gt;&#x27;, &#x27;&lt;package&gt;.*&#x27;]),  </span><br><span class="line">    long_description=long_description,  </span><br><span class="line">    long_description_content_type=&quot;text/markdown&quot;,  </span><br><span class="line">    url=&#x27;&#x27;,  </span><br><span class="line">    author=&#x27;&#x27;,  </span><br><span class="line">    author_email=&#x27;&#x27;,  </span><br><span class="line">    license=&#x27;GPL-3.0&#x27;,  </span><br><span class="line">    classifiers=[  </span><br><span class="line">        &quot;Programming Language :: Python :: 3&quot;,  </span><br><span class="line">        &quot;License :: OSI Approved :: GNU General Public License v3 (GPLv3)&quot;,  </span><br><span class="line">        &quot;Operating System :: OS Independent&quot;,  </span><br><span class="line">    ],  </span><br><span class="line">    install_requires=[  </span><br><span class="line">        &#x27;pandas&#x27;,   </span><br><span class="line">        &#x27;numpy&#x27; </span><br><span class="line">    ],  </span><br><span class="line">    extras_require=&#123;  </span><br><span class="line">        &#x27;all&#x27;: [],  </span><br><span class="line">        &#x27;dev&#x27;: [&#x27;pytest&gt;=7.0&#x27;, &#x27;twine&gt;=4.0.2&#x27;]  </span><br><span class="line">    &#125;,  </span><br><span class="line">    python_requires=&#x27;&gt;=3.6&#x27;,  </span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-
-<p>run</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python setup.py bdist_wheel sdist</span><br></pre></td></tr></table></figure>
-
-<p>(optional) to test package locally</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install .</span><br></pre></td></tr></table></figure>
-
-
-<h2 id="Publish"><a href="#Publish" class="headerlink" title="Publish"></a>Publish</h2><p>Setup info on <a target="_blank" rel="noopener" href="https://test.pypi.org/">test.pypi</a> or <a target="_blank" rel="noopener" href="https://pypi.org/">pypi</a> if not yet. The API key for publishing can be found there.</p>
-<p>check:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">twine check dist/*</span><br></pre></td></tr></table></figure>
-
-<p>publish to test.pypi:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">twine upload -r testpypi dist/*</span><br></pre></td></tr></table></figure>
-
-<p>publish to pypi:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">twine upload dist/*</span><br></pre></td></tr></table></figure>
-
-<hr>
-<p>For more detail check <a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=5KEObONUkik&t=918s">Youtube tutorial</a></p>
-
-      </div>
-      
-        <div class="prev-or-next">
-          <div class="post-foot-next">
-            
-              <a href="/2024/02/05/%E4%B8%80%E4%BA%9B%E6%83%B3%E6%B3%95/" target="_self">
-                <i class="iconfont icon-chevronleft"></i>
-                <span>Prev</span>
-              </a>
-            
-          </div>
-          <div class="post-attach">
-            <span class="post-pubtime">
-              <i class="iconfont icon-updatetime mr-10" title="Update time"></i>
-              2025-11-27 14:20:43
-            </span>
-            
-                  <span class="post-tags">
-                    <i class="iconfont icon-tags mr-10" title="Tags"></i>
-                    
-                    <span class="span--tag mr-8">
-                      <a href="/tags/skill/" title="skill">
-                        #skill
-                      </a>
-                    </span>
-                    
-                  </span>
-              
-          </div>
-          <div class="post-foot-prev">
-            
-              <a href="/2024/10/26/Better-Understanding-Dot-Product-hints/" target="_self">
-                <span>Next</span>
-                <i class="iconfont icon-chevronright"></i>
-              </a>
-            
-          </div>
+<div class="container archives">
+  <div class="post-list">
+    
+        <!-- 后续文章的发布年份呈现 -->
+        <div class="content-title">
+          <h2>
+            <span>2025</span>
+          </h2>
         </div>
       
-    </div>
+      <div class="post-item" title="Deploy-Hexo-Blog">
+        <div class="time-m-d">11-27</div>
+        <div class="title">
+          <a href="/2025/11/27/Deploy-Hexo-Blog/">
+            <span>Deploy-Hexo-Blog</span>
+          </a>
+        </div>
+      </div>
     
-  <div id="btn-catalog" class="btn-catalog">
-    <i class="iconfont icon-catalog"></i>
-  </div>
-  <div class="post-catalog hidden" id="catalog">
-    <div class="title">Contents</div>
-    <div class="catalog-content">
+        <!-- 后续文章的发布年份呈现 -->
+        <div class="content-title">
+          <h2>
+            <span>2024</span>
+          </h2>
+        </div>
       
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Build"><span class="toc-text">Build</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Publish"><span class="toc-text">Publish</span></a></li></ol>
-      
-    </div>
-  </div>
-
-  
-<script src="/js/catalog.js"></script>
-
-
-
-
+      <div class="post-item" title="Better Understanding Dot Product - small hints">
+        <div class="time-m-d">10-26</div>
+        <div class="title">
+          <a href="/2024/10/26/Better-Understanding-Dot-Product-hints/">
+            <span>Better Understanding Dot Product - small hints</span>
+          </a>
+        </div>
+      </div>
     
-      <div class="comments-container">
-        
-
-
-
-
-  
-    <script async type="text/javascript" src='https://cdn.jsdelivr.net/npm/valine@1.4.18/dist/Valine.min.js' onload="loadValineSuc(this)"></script>
-  
-
-  <div id="vcomments"></div>
-
-  <script>
-    function loadValineSuc() {
-      new Valine({
-        el: '#vcomments',
-        appId: 'W6AOGFAMyF4VAIziB8pX56Oe-gzGzoHsz',
-        appKey: 'QfZDVhjD2RHYdS4Kil8GMQWI',
-        placeholder: 'listening...',
-        avatar: 'retro',
-        lang: 'en'
-      })
-    }
-  </script>
-
-    <style>
-      .comments-container .v .vempty {
-        display: none!important;
-      }
-    </style>
-
-
-
-
+      <div class="post-item" title="Build & Publish a Python Package">
+        <div class="time-m-d">10-06</div>
+        <div class="title">
+          <a href="/2024/10/06/Build-Publish-a-Python-Package/">
+            <span>Build & Publish a Python Package</span>
+          </a>
+        </div>
+      </div>
+    
+      <div class="post-item" title="一些想法">
+        <div class="time-m-d">02-05</div>
+        <div class="title">
+          <a href="/2024/02/05/%E4%B8%80%E4%BA%9B%E6%83%B3%E6%B3%95/">
+            <span>一些想法</span>
+          </a>
+        </div>
+      </div>
+    
+        <!-- 后续文章的发布年份呈现 -->
+        <div class="content-title">
+          <h2>
+            <span>2023</span>
+          </h2>
+        </div>
+      
+      <div class="post-item" title="Existing Models">
+        <div class="time-m-d">04-17</div>
+        <div class="title">
+          <a href="/2023/04/17/existing-models/">
+            <span>Existing Models</span>
+          </a>
+        </div>
+      </div>
+    
+      <div class="post-item" title="Process - Bases">
+        <div class="time-m-d">02-09</div>
+        <div class="title">
+          <a href="/2023/02/09/process-bases/">
+            <span>Process - Bases</span>
+          </a>
+        </div>
+      </div>
+    
+      <div class="post-item" title="Structure - Elements">
+        <div class="time-m-d">02-09</div>
+        <div class="title">
+          <a href="/2023/02/09/structure-elements/">
+            <span>Structure - Elements</span>
+          </a>
+        </div>
+      </div>
+    
+        <!-- 后续文章的发布年份呈现 -->
+        <div class="content-title">
+          <h2>
+            <span>2022</span>
+          </h2>
+        </div>
+      
+      <div class="post-item" title="Theory - Init">
+        <div class="time-m-d">10-20</div>
+        <div class="title">
+          <a href="/2022/10/20/theory-init/">
+            <span>Theory - Init</span>
+          </a>
+        </div>
+      </div>
+    
+        <!-- 后续文章的发布年份呈现 -->
+        <div class="content-title">
+          <h2>
+            <span>2021</span>
+          </h2>
+        </div>
+      
+      <div class="post-item" title="Music Time!">
+        <div class="time-m-d">12-31</div>
+        <div class="title">
+          <a href="/2021/12/31/playlists/">
+            <span>Music Time!</span>
+          </a>
+        </div>
       </div>
     
   </div>
+</div>
 
         
 <div class="footer">
@@ -548,24 +493,6 @@
 
 
         
-  
-    <div class="share-icon tools-bar-item">
-      <a href="javascript: void(0)" id="share-icon">
-        <i class="iconfont iconshare"></i>
-      </a>
-      <div class="share-content hidden">
-        
-          <a class="share-item" href="https://twitter.com/intent/tweet?text=' + Build%20%26%20Publish%20a%20Python%20Package + '&url=' + http%3A%2F%2Fangushushu.com%2F2024%2F10%2F06%2FBuild-Publish-a-Python-Package%2F + '" target="_blank" title="Twitter">
-            <i class="iconfont icon-twitter"></i>
-          </a>
-        
-        
-          <a class="share-item" href="https://www.facebook.com/sharer.php?u=http://angushushu.com/2024/10/06/Build-Publish-a-Python-Package/" target="_blank" title="Facebook">
-            <i class="iconfont icon-facebooksquare"></i>
-          </a>
-        
-      </div>
-    </div>
   
   
 <script src="/js/shares.js"></script>
