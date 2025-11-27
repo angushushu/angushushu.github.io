@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://angushushu.com/2025/11/27/Update-Hexo-Blog/</loc>
+    <loc>http://angushushu.com/writings/</loc>
     
     <lastmod>2025-11-27</lastmod>
     
@@ -11,7 +11,7 @@
   </url>
   
   <url>
-    <loc>http://angushushu.com/writings/</loc>
+    <loc>http://angushushu.com/2025/11/27/Update-Hexo-Blog/</loc>
     
     <lastmod>2025-11-27</lastmod>
     
@@ -119,6 +119,13 @@
 
   
   <url>
+    <loc>http://angushushu.com/tags/math/</loc>
+    <lastmod>2025-11-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>http://angushushu.com/tags/skill/</loc>
     <lastmod>2025-11-27</lastmod>
     <changefreq>weekly</changefreq>
@@ -134,13 +141,6 @@
   
   <url>
     <loc>http://angushushu.com/tags/model/</loc>
-    <lastmod>2025-11-27</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://angushushu.com/tags/math/</loc>
     <lastmod>2025-11-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
