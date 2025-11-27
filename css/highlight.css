@@ -1,19 +1,19 @@
 .article-entry pre,
 .article-entry .highlight {
-  background: #2d2d2d;
+  background: var(--hl-background);
   margin: 0 -20px;
   padding: 15px 20px;
   border-style: solid;
   border-color: color-border;
   border-width: 1px 0;
   overflow: auto;
-  color: #ccc;
+  color: var(--hl-foreground);
   line-height: 22.400000000000002px
 }
 
 .article-entry .highlight .gutter pre,
 .article-entry .gist .gist-file .gist-data .line-numbers {
-  color: #666;
+  color: var(--hl-gutter-color);
   font-size: .85em
 }
 
@@ -52,7 +52,7 @@
 
 .article-entry .highlight figcaption {
   font-size: .85em;
-  color: #999;
+  color: var(--hl-comment);
   line-height: 1em;
   margin-bottom: 1em;
 }
@@ -71,7 +71,7 @@
 }
 
 .article-entry .highlight .line.marked {
-  background: #515151
+  background: var(--hl-marked-line)
 }
 
 .article-entry .gist {
@@ -79,7 +79,7 @@
   border-style: solid;
   border-color: color-border;
   border-width: 1px 0;
-  background: #2d2d2d;
+  background: var(--hl-background);
   padding: 15px 20px 15px 0;
 }
 
@@ -111,8 +111,8 @@
 }
 
 .article-entry .gist .gist-file .gist-meta {
-  background: #2d2d2d;
-  color: #999;
+  background: var(--hl-background);
+  color: var(--hl-comment);
   font: .85em -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   text-shadow: 0 0;
   padding: 0;
@@ -131,7 +131,7 @@
 
 pre .comment,
 pre .title {
-  color: #999
+  color: var(--hl-comment)
 }
 
 pre .variable,
@@ -146,7 +146,7 @@ pre .html .doctype,
 pre .css .id,
 pre .css .class,
 pre .css .pseudo {
-  color: #f2777a
+  color: var(--hl-red)
 }
 
 pre .number,
@@ -155,13 +155,13 @@ pre .built_in,
 pre .literal,
 pre .params,
 pre .constant {
-  color: #f99157
+  color: var(--hl-orange)
 }
 
 pre .class,
 pre .ruby .class .title,
 pre .css .rules .attribute {
-  color: #9c9
+  color: var(--hl-green)
 }
 
 pre .string,
@@ -170,11 +170,11 @@ pre .inheritance,
 pre .header,
 pre .ruby .symbol,
 pre .xml .cdata {
-  color: #9c9
+  color: var(--hl-green)
 }
 
 pre .css .hexcolor {
-  color: #6cc
+  color: var(--hl-cyan)
 }
 
 pre .function,
@@ -185,17 +185,17 @@ pre .ruby .title .keyword,
 pre .perl .sub,
 pre .javascript .title,
 pre .coffeescript .title {
-  color: #69c
+  color: var(--hl-blue)
 }
 
 pre .keyword,
 pre .javascript .function {
-  color: #c9c
+  color: var(--hl-purple)
 }
 
 .markdown-body .highlight {
-  color: #ccc;
-  background-color: #2d2d2d;
+  color: var(--hl-foreground);
+  background-color: var(--hl-background);
   border-radius: 5px;
 }
 
@@ -209,15 +209,15 @@ pre .javascript .function {
 }
 
 .markdown-body .highlight .gutter pre {
-  color: #999;
-  background: #1b1b1b;
+  color: var(--hl-comment);
+  background: var(--hl-gutter-bg);
 }
 
 .highlight .code pre {
   width: 100%;
   padding-left: 10px;
   padding-right: 10px;
-  background-color: #2d2d2d !important;
+  background-color: var(--hl-background) !important;
 }
 
 .markdown-body .highlight table tbody pre {
@@ -234,7 +234,7 @@ figure {
 
 figure figcaption {
   padding-left: 1rem;
-  background-color: #1b1b1b;
+  background-color: var(--hl-gutter-bg);
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
 }
