@@ -13,7 +13,7 @@
   --bg-block-md-quote: #EEEEEE;
   --color-block-md-quote: #555555;
   --color-divider-md-border: #5858581a;
-  --bg-content-search: rgb(255 255 255 / 60%);
+  --bg-content-search: rgba(255, 255, 255, 0.6);
   --bg-block-md-pre: #e6e6e6;
   --color-text-md-pre: #555555;
   --bg-block-md-table: #ffffff;

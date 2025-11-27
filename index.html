@@ -112,19 +112,44 @@
         <!-- 用於網頁 url形式：https://yoursite/writings/ -->
 <div class="container about-index">
   <div class="markdown-body">
-    <p><style><br>.link {<br>    color: #4f8aff !important;<br>    text-decoration: none !important;<br>    border-bottom: none !important;<br>}<br>.link:hover {<br>    font-weight: bold !important;<br>}</p>
-<h1 id="head"><a href="#head" class="headerlink" title="head {"></a>head {</h1><p>  transition: transform .5s ease-in-out;<br>  border: 1px solid;<br>}<br>@keyframes swingSmooth {<br>  0%, 100% { transform: rotate(0deg); }<br>  25% { transform: rotate(5deg); }<br>  50% { transform: rotate(0deg); }<br>  75% { transform: rotate(-5deg); }<br>}</p>
-<h1 id="head-hover"><a href="#head-hover" class="headerlink" title="head:hover {"></a>head:hover {</h1><p>  display: block;<br>  animation: swingSmooth 1s ease-in-out infinite;<br>  transform-origin: 50% 100%; /<em> 设置旋转的基点为图片底部中心 </em>/<br>}</p>
-<h1 id="head-box"><a href="#head-box" class="headerlink" title="head-box {"></a>head-box {</h1><pre><code>max-width: 15rem;
-max-height: 15rem;
-display: flex;
-align-items: flex-end;
-</code></pre><p>}<br>&lt;/style&gt;</p>
-<p><div>
+    <style>
+.link {
+    color: #4f8aff !important;
+    text-decoration: none !important;
+    border-bottom: none !important;
+}
+.link:hover {
+    font-weight: bold !important;
+}
+#head {
+  transition: transform .5s ease-in-out;
+  border: 1px solid;
+}
+@keyframes swingSmooth {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(5deg); }
+  50% { transform: rotate(0deg); }
+  75% { transform: rotate(-5deg); }
+}
+
+#head:hover {
+  display: block;
+  animation: swingSmooth 1s ease-in-out infinite;
+  transform-origin: 50% 100%; /* 设置旋转的基点为图片底部中心 */
+}
+#head-box {
+    max-width: 15rem;
+    max-height: 15rem;
+    display: flex;
+    align-items: flex-end;
+}
+</style>
+<div>
     <div style="margin:0 auto; display: flex; max-width: 40rem; height: auto;">
         <div id="head-box">
             <img id="head" style="background-color:transparent" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/images/head.png" alt="angushushu's skull"></img>
-        </div><br>        <div style="padding-left:1rem;max-width:27rem;height:auto;display:flex;align-items:flex-end">
+        </div>
+        <div style="padding-left:1rem;max-width:27rem;height:auto;display:flex;align-items:flex-end">
             <div style="max-width:27rem;height:auto;line-height:2.4rem;font-size:1.8rem">
                 <b>NAME: Shu Hu </b><br>
                 <b>EMAIL:shu13@gsu.edu</b><br>
@@ -132,7 +157,12 @@ align-items: flex-end;
                 <a href="https://github.com/Angushushu" target="_blank" class="link"><b>Github</b>
                 </a><a href="/files/Shu_CV.pdf" target="_blank" class="link"><b>CV</b>
                 </a><a href="/2021/12/31/playlists/" target="_blank" class="link"><b>Playlist</b></a>
-            </div><br>        &lt;/div&gt;<br>    &lt;/div&gt;<br>&lt;/div&gt;<br><br/></p>
+            </div>
+        </div>
+    </div>
+</div>
+<br/>
+
 <p>Hi, I’m a Ph.D. student at Prof. <a href="https://education.gsu.edu/profile/joe-magliano/" target="_blank" class="link">Joseph P. Magliano</a>‘s <a href="https://mediacomplab.com" target="_blank" class="link">Media Comprehension Lab</a>. I received my BS degree in Psych, CS, and Math, and a certificate in Digital Cinema Production from UW-Madison. Previously, I worked at Prof. <a href="https://edpsych.education.wisc.edu/staff/matthews-percival/" target="_blank" class="link">Percival Matthews</a>‘ <a href="https://web.education.wisc.edu/pmatthews/" target="_blank" class="link">MELD Lab</a> as a Research Assistant. I’m also collaborating with <a href="https://luanlingfei.com/" target="_blank" class="link">Lingfei Luan</a> and <a href="https://www.researchgate.net/profile/Lucia-Cores-Sarria" target="_blank" class="link">Lucía Cores Sarría</a> on film perception studies.</p>
 <iframe style="border:none;" src="/images/3d_graph.html" width="100%" height="400"></iframe>
 
