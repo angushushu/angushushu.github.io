@@ -176,12 +176,10 @@
           
       </div>
       <div class="markdown-body">
-        <center>
+        <p><center>
 <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/images/struct_example.png" width="500">
 naive example of the structure
-</center>
-Above is a naive example that shows the main component of the potential model: the connections between representations, and the connections between states (by actions). There will be a lot of features needed to be adjusted, just providing an insight into the model.
-
+</center><br>Above is a naive example that shows the main component of the potential model: the connections between representations, and the connections between states (by actions). There will be a lot of features needed to be adjusted, just providing an insight into the model.</p>
 <h1 id="Elements"><a href="#Elements" class="headerlink" title="Elements"></a>Elements</h1><p>The two main elements required to generate this structure are representations (set of representations), and actions (sequence of actions). The finest elements of them (without elements constructing them) are the representation units and action units. These elements are connected by two types of connection, let’s call them connection 1 and connection 2. Connection 1 is intended to simulate semantic memory, priming, activation of knowledge, etc. Connection 2 is intended to simulate procedural memory, knowledge of problem-solving, etc. Connection 2 is always directed, but the features of Connection 1 will need more discussion.</p>
 <h2 id="1-Representation"><a href="#1-Representation" class="headerlink" title="1 Representation"></a>1 Representation</h2><p>Representation is an abstract but simple concept. It’s a set of certain information (elements), and the elements within a representation can be representation units, representations, ordered pairs of representations, or actions. You can consider it as a node in an artificial neural network that explicitly states its meaning (which makes the model more explanatory).</p>
 <h3 id="1-1-Representation-Unit"><a href="#1-1-Representation-Unit" class="headerlink" title="1.1 Representation Unit"></a>1.1 Representation Unit</h3><p>A representation unit is the most basic unit of representation, which contains nothing. You can consider it as a sensory unit, which provides information by itself. In the implementation, representation is more like a starting point of the model, the implementer of the model could determine its level of specificity. For instance, in discourse psychology, a representation unit can be a letter, a word, or a thought unit.</p>
@@ -197,7 +195,7 @@ Above is a naive example that shows the main component of the potential model: t
         <div class="prev-or-next">
           <div class="post-foot-next">
             
-              <a href="/2022/10/20/theory-init/" target="_self">
+              <a href="/2023/02/09/process-bases/" target="_self">
                 <i class="iconfont icon-chevronleft"></i>
                 <span>Prev</span>
               </a>
@@ -229,7 +227,7 @@ Above is a naive example that shows the main component of the potential model: t
           </div>
           <div class="post-foot-prev">
             
-              <a href="/2023/02/09/process-bases/" target="_self">
+              <a href="/2023/04/17/existing-models/" target="_self">
                 <span>Next</span>
                 <i class="iconfont icon-chevronright"></i>
               </a>
