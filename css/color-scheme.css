@@ -32,14 +32,14 @@
   --color-text-md-title: #eceff4;
   --color-text-md-content: #eceff4;
   --color-text-md-code: #e96900;
-  --bg-text-md-code: #3b4252;
-  --bg-block-md-quote: #3a4252;
-  --color-block-md-quote: #abb9cf;
+  --bg-text-md-code: #414141;
+  --bg-block-md-quote: #464646;
+  --color-block-md-quote: #b9b9b9;
   --color-divider-md-border: #ffffff4f;
-  --bg-content-search: rgb(59 66 82 / 60%);
-  --bg-block-md-pre: #3a4252;
-  --color-text-md-pre: #abb9cf;
-  --bg-block-md-table: #2E3440;
-  --bg-block-md-table-2: #313744;
-  --color-border-md-table: #4c566a;
+  --bg-content-search: rgba(71, 71, 71, 0.6);
+  --bg-block-md-pre: #464646;
+  --color-text-md-pre: #bebebe;
+  --bg-block-md-table: #3a3a3a;
+  --bg-block-md-table-2: #3f3f3f;
+  --color-border-md-table: #555555;
 }
