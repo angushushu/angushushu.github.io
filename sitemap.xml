@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://angushushu.com/</loc>
+    
+    <lastmod>2026-01-09</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://angushushu.com/2025/11/27/Update-Hexo-Blog/</loc>
     
     <lastmod>2025-11-29</lastmod>
@@ -21,15 +30,6 @@
   
   <url>
     <loc>http://angushushu.com/writings/</loc>
-    
-    <lastmod>2025-11-27</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://angushushu.com/</loc>
     
     <lastmod>2025-11-27</lastmod>
     
@@ -119,14 +119,14 @@
 
   
   <url>
-    <loc>http://angushushu.com/tags/math/</loc>
+    <loc>http://angushushu.com/tags/skill/</loc>
     <lastmod>2026-01-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://angushushu.com/tags/skill/</loc>
+    <loc>http://angushushu.com/tags/math/</loc>
     <lastmod>2026-01-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>

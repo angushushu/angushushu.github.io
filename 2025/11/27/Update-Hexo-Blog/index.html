@@ -172,9 +172,12 @@
       <div class="markdown-body">
         <p>This is a cheat sheet for updating your hexo blogs, which assumes you have already set up the theme.</p>
 <h2 id="Add-a-blog"><a href="#Add-a-blog" class="headerlink" title="Add a blog"></a>Add a blog</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new [layout] &lt;title&gt;</span><br></pre></td></tr></table></figure>
+
 <p>In my case I generally use <code>post</code> for layout, also since I’m using local environment I run commands with <code>npx</code>.</p>
-<h2 id="Build-amp-Deploy"><a href="#Build-amp-Deploy" class="headerlink" title="Build &amp; Deploy"></a>Build &amp; Deploy</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo clean &amp;&amp; hexo g</span><br></pre></td></tr></table></figure>
-<p>This will clean the old generated files and regenerate the static files.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo s</span><br></pre></td></tr></table></figure><br>This allows you to preview locally.</p>
+<h2 id="Build-Deploy"><a href="#Build-Deploy" class="headerlink" title="Build &amp; Deploy"></a>Build &amp; Deploy</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo clean &amp;&amp; hexo g</span><br></pre></td></tr></table></figure>
+<p>This will clean the old generated files and regenerate the static files.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo s</span><br></pre></td></tr></table></figure>
+<p>This allows you to preview locally.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo d <span class="comment"># or directly hexo clean &amp;&amp; hexo g &amp;&amp; hexo d</span></span><br></pre></td></tr></table></figure>
 <p>This will deploy the static files to the platform (should be configured in the _config.yml).</p>
 <hr>
@@ -223,7 +226,7 @@
     <div class="title">Contents</div>
     <div class="catalog-content">
       
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Add-a-blog"><span class="toc-text">Add a blog</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Build-amp-Deploy"><span class="toc-text">Build &amp; Deploy</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Add-a-blog"><span class="toc-text">Add a blog</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Build-Deploy"><span class="toc-text">Build &amp; Deploy</span></a></li></ol>
       
     </div>
   </div>

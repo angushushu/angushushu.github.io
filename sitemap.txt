@@ -1,7 +1,7 @@
+http://angushushu.com/
 http://angushushu.com/2025/11/27/Update-Hexo-Blog/
 http://angushushu.com/2024/10/06/Build-Publish-a-Python-Package/
 http://angushushu.com/writings/
-http://angushushu.com/
 http://angushushu.com/tags/
 http://angushushu.com/2024/02/05/%E4%B8%80%E4%BA%9B%E6%83%B3%E6%B3%95/
 http://angushushu.com/2022/10/20/theory-init/
@@ -11,8 +11,8 @@ http://angushushu.com/2021/12/31/playlists/
 http://angushushu.com/2023/04/17/existing-models/
 http://angushushu.com/2024/10/26/Better-Understanding-Dot-Product-hints/
 http://angushushu.com/
-http://angushushu.com/tags/math/
 http://angushushu.com/tags/skill/
+http://angushushu.com/tags/math/
 http://angushushu.com/tags/theory/
 http://angushushu.com/tags/model/
 http://angushushu.com/tags/thoughts/
