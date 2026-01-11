@@ -4,7 +4,7 @@
   <url>
     <loc>http://angushushu.com/</loc>
     
-    <lastmod>2026-01-09</lastmod>
+    <lastmod>2026-01-11</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -119,13 +119,6 @@
 
   
   <url>
-    <loc>http://angushushu.com/tags/skill/</loc>
-    <lastmod>2026-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>http://angushushu.com/tags/theory/</loc>
     <lastmod>2026-01-11</lastmod>
     <changefreq>weekly</changefreq>
@@ -140,14 +133,21 @@
   </url>
   
   <url>
-    <loc>http://angushushu.com/tags/thoughts/</loc>
+    <loc>http://angushushu.com/tags/math/</loc>
     <lastmod>2026-01-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://angushushu.com/tags/math/</loc>
+    <loc>http://angushushu.com/tags/skill/</loc>
+    <lastmod>2026-01-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://angushushu.com/tags/thoughts/</loc>
     <lastmod>2026-01-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
