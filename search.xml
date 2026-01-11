@@ -182,17 +182,6 @@
     
     
     <entry>
-      <title>tags</title>
-      <link href="/tags/index.html"/>
-      <url>/tags/index.html</url>
-      
-        <content type="html"><![CDATA[]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>Writings</title>
       <link href="/writings/index.html"/>
       <url>/writings/index.html</url>
@@ -209,6 +198,17 @@
       <url>/index.html</url>
       
         <content type="html"><![CDATA[<style>.link {    color: #4f8aff !important;    text-decoration: none !important;    border-bottom: none !important;}.link:hover {    font-weight: bold !important;}#head {  transition: transform .5s ease-in-out;  border: 1px solid;}@keyframes swingSmooth {  0%, 100% { transform: rotate(0deg); }  25% { transform: rotate(5deg); }  50% { transform: rotate(0deg); }  75% { transform: rotate(-5deg); }}#head:hover {  display: block;  animation: swingSmooth 1s ease-in-out infinite;  transform-origin: 50% 100%; /* 设置旋转的基点为图片底部中心 */}#head-box {    max-width: 15rem;    max-height: 15rem;    display: flex;    align-items: flex-end;}</style><div>    <div style="margin:0 auto; display: flex; max-width: 40rem; height: auto;">        <div id="head-box">            <img id="head" style="background-color:transparent" src="/images/head.png" alt="angushushu's skull"></img>        </div>        <div style="padding-left:1rem;max-width:27rem;height:auto;display:flex;align-items:flex-end">            <div style="max-width:27rem;height:auto;line-height:2.4rem;font-size:1.8rem">                <b>NAME: Shu Hu </b><br>                <b>EMAIL:shu13@gsu.edu</b><br>                <b>angushushu@outlook.com</b><br>                <a href="https://github.com/Angushushu" target="_blank" class="link"><b>Github</b>                </a><a href="/files/Shu_CV.pdf" target="_blank" class="link"><b>CV</b>                </a><a href="/2021/12/31/playlists/" target="_blank" class="link"><b>Playlist</b></a>            </div>        </div>    </div></div><br/><p>Hi, I’m a Ph.D. student at Prof. <a href="https://education.gsu.edu/profile/joe-magliano/" target="_blank" class="link">Joseph P. Magliano</a>‘s <a href="https://mediacomplab.com" target="_blank" class="link">Media Comprehension Lab</a>. I received my BS degree in Psych, CS, and Math, and a certificate in Digital Cinema Production from UW-Madison. Previously, I worked at Prof. <a href="https://edpsych.education.wisc.edu/staff/matthews-percival/" target="_blank" class="link">Percival Matthews</a>‘ <a href="https://web.education.wisc.edu/pmatthews/" target="_blank" class="link">MELD Lab</a> as a Research Assistant. I’m also collaborating with <a href="https://luanlingfei.com/" target="_blank" class="link">Lingfei Luan</a> and <a href="https://www.researchgate.net/profile/Lucia-Cores-Sarria" target="_blank" class="link">Lucía Cores Sarría</a> on film perception studies.</p><iframe style="border:none;" src="/images/3d_graph.html" width="100%" height="400"></iframe><blockquote><p><small><strong>Research Interests</strong>: Narrative Experience, Goals, Decision-Making, Emotion, Computational Models, etc</small></p></blockquote><p>Random Stuff: <a href="https://regemx.org">RegemX</a> <a href="https://angushushu.com/piano">KeyPiano</a> <a href="https://cubexmc.net">CubeX</a></p>]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>tags</title>
+      <link href="/tags/index.html"/>
+      <url>/tags/index.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
       
     </entry>
     
