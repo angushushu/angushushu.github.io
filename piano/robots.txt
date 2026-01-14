@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://keypiano.app/sitemap.xml
