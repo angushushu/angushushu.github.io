@@ -13,7 +13,7 @@
   
   <title>
     
-      Better Understanding Dot Product - small hints 
+      Why is the Dot Product related to Cosine? 
       
       
       |
@@ -150,21 +150,15 @@
   <!-- 文章内容页 url形式：https://yoursite/文章标题/ -->
   <div class="container post-details" id="post-details">
     <div class="post-content">
-      <div class="post-title">Better Understanding Dot Product - small hints</div>
+      <div class="post-title">Why is the Dot Product related to Cosine?</div>
       <div class="post-attach">
         <span class="post-pubtime">
           <i class="iconfont icon-updatetime mr-10" title="Update time"></i>
-          2025-10-19 00:08:08
+          2026-02-04 18:53:17
         </span>
         
               <span class="post-tags">
                 <i class="iconfont icon-tags mr-10" title="Tags"></i>
-                
-                <span class="span--tag mr-8">
-                  <a href="/tags/math/" title="math">
-                    #math
-                  </a>
-                </span>
                 
                 <span class="span--tag mr-8">
                   <a href="/tags/skill/" title="skill">
@@ -172,13 +166,18 @@
                   </a>
                 </span>
                 
+                <span class="span--tag mr-8">
+                  <a href="/tags/math/" title="math">
+                    #math
+                  </a>
+                </span>
+                
               </span>
           
       </div>
       <div class="markdown-body">
-        <p>After undergrads, many of my knowledge have lost, recently I’m reviewing some of the concepts. Here I show an example of dot products for 2 vectors with length 2 to help understand the idea of dot product (not a proof).</p>
-<p>Given $\mathbf{v_1} = \begin{bmatrix} i_1 \\ j_1 \end{bmatrix}, \mathbf{v_2} = \begin{bmatrix} i_2 \\ j_2 \end{bmatrix}$ </p>
-<p>Shown below:</p>
+        <p>Since graduating from my undergrad, much of my knowledge has faded. Recently, I’m reviewing some core concepts. Here I show an example of dot products for 2 vectors with length 2 to help understand the idea of dot product (not a proof).</p>
+<p>Given $\mathbf{v_1} &#x3D; \begin{bmatrix} i_1 \ j_1 \end{bmatrix}, \mathbf{v_2} &#x3D; \begin{bmatrix} i_2 \ j_2 \end{bmatrix}$<br>Shown below:</p>
 <table>
 <thead>
 <tr>
@@ -191,27 +190,7 @@
 <td align="center"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/images/cross_prod_v2.jpg"></td>
 </tr>
 </tbody></table>
-<p>So that dot product is </p>
-
-$$
-\begin{align*} 
-\mathbf{v_1} \cdot \mathbf{v_2} & = i_1\cdot i_2 + j_1\cdot j_2 \\ 
-& = |\mathbf{v_1}|\sin\theta_1\cdot|\mathbf{v_2}|\sin \theta_2 + |\mathbf{v_1}|\cos\theta_1\cdot|\mathbf{v_2}|\cos \theta_2 \\
-& = |\mathbf{v_1}||\mathbf{v_2}|(\sin\theta_1\cdot\sin\theta_2+\cos\theta_1\cdot\cos\theta_2)
-\end{align*}
-$$
-
-<p>Then by cosine identity, which is $\cos(\theta_1-\theta_2) &#x3D; \cos\theta_1\cdot\cos\theta_2+\sin\theta_1\cdot\sin\theta_2$, we get</p>
-
-$$\begin{align} \mathbf{v_1} \cdot \mathbf{v_2} & = |\mathbf{v_1}||\mathbf{v_2}|\cos(\theta_1-\theta_2) \\
-	& = |\mathbf{v_1}||\mathbf{v_2}|\cos(\Delta\theta) \\
-	& = |\mathbf{v_1}|\cos(\Delta\theta)\cdot|\mathbf{v_2}|\end{align}$$
-
-<p>When put two vectors together, we see the intuitive meaning of it, which is multiplication of the length of projection of $\mathbf{v_1}$ on $\mathbf{v_2}$ with the length of $\mathbf{v_2}$.<br><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/images/cross_prod_3.jpg"><br>Which is a scale related to the angle between two vectors (more specifically, in what degree they are in the same line) and the length between them. So when people only care about the level of parallel, they do cosine similarity:</p>
-
-$$\text{cosine similarity} = \frac{\mathbf{v_1}\cdot\mathbf{v_f}}{|\mathbf{v_1}||\mathbf{v_2}|} = \cos(\Delta\theta)$$
-
-<p>Hope this example help you feel more trivia about the operation, it does for me a little bit. If not, let’s go through an real life example:<br><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/images/anti_gravity_lean.jpg"><br>Say MJ is performing his Anti-Gravity Lean toward a line on the ground. Let MJ be $\mathbf{v_1}$ and the line be $\mathbf{v_2}$ (we view from aside), there’s sunshine above MJ head. We observe this performance from a location orthogonal to the plane formed by standing MJ and the line. $\cos\Delta\theta\cdot\mathbf{v_1}$ is the shadow of MJ on the line, the more parallel MJ is to the line, the longer his shadow is, and therefore the larger the dot product of MJ and the line would be.<br>To MJ, the dot product might be something correlated to his sense of the length of the line (when the line is beneath him). Since the more parallel they are, the longer the line is in his eyes.</p>
+<p>So that dot product is<br>$$\begin{align} \mathbf{v_1} \cdot \mathbf{v_2} &amp; &#x3D; i_1\cdot i_2 + j_1\cdot j_2 \<br>        &amp; &#x3D; |\mathbf{v_1}|\sin\theta_1\cdot|\mathbf{v_2}|\sin \theta_2 + |\mathbf{v_1}|\cos\theta_1\cdot|\mathbf{v_2}|\cos \theta_2\<br>        &amp; &#x3D; |\mathbf{v_1}||\mathbf{v_2}|(\sin\theta_1\cdot\sin\theta_2+\cos\theta_1\cdot\cos\theta_2)\end{align}$$<br>Then by cosine identity, which is $\cos(\theta_1-\theta_2) &#x3D; \cos\theta_1\cdot\cos\theta_2+\sin\theta_1\cdot\sin\theta_2$, we get<br>$$\begin{align} \mathbf{v_1} \cdot \mathbf{v_2} &amp; &#x3D; |\mathbf{v_1}||\mathbf{v_2}|\cos(\theta_1-\theta_2) \<br>    &amp; &#x3D; |\mathbf{v_1}||\mathbf{v_2}|\cos(\Delta\theta) \<br>    &amp; &#x3D; |\mathbf{v_1}|\cos(\Delta\theta)\cdot|\mathbf{v_2}|\end{align}$$<br>When put two vectors together, we see the intuitive meaning of it, which is multiplication of the length of projection of $\mathbf{v_1}$ on $\mathbf{v_2}$ with the length of $\mathbf{v_2}$.<br><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/images/cross_prod_3.jpg"><br>Which is a scale related to the angle between two vectors (more specifically, in what degree they are in the same line) and the length between them. So when people only care about the level of parallel, they do cosine similarity:<br>$$\text{cosine similarity} &#x3D; \frac{\mathbf{v_1}\cdot\mathbf{v_2}}{|\mathbf{v_1}||\mathbf{v_2}|} &#x3D; \cos(\Delta\theta)$$<br>Hope this example helps you build more <strong>intuition</strong> about the operation, it does for me a little bit. If not, let’s go through an real life example:<br><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/images/anti_gravity_lean.jpg"><br>Imagine MJ performing his famous Anti-Gravity Lean over a line drawn on the ground. Let MJ be $\mathbf{v_1}$ and the line be $\mathbf{v_2}$ (we view from aside), there’s sunshine above MJ head. We observe this performance from a location orthogonal to the plane formed by standing MJ and the line. $\cos\Delta\theta\cdot\mathbf{v_1}$ is the shadow of MJ on the line, the closer MJ is to being parallel with the line (the floor), the longer his shadow becomes, and therefore the larger the dot product of MJ and the line would be.<br>To MJ, the dot product might be something correlated to his sense of the length of the line (when the line is beneath him). Since the more parallel they are, the longer the line is in his eyes.</p>
 <p>Note: this is not a formal proof, for formal proof you can see <a target="_blank" rel="noopener" href="https://tutorial.math.lamar.edu/classes/calcii/dotproduct.aspx">here</a></p>
 
       </div>
@@ -219,7 +198,7 @@ $$\text{cosine similarity} = \frac{\mathbf{v_1}\cdot\mathbf{v_f}}{|\mathbf{v_1}|
         <div class="prev-or-next">
           <div class="post-foot-next">
             
-              <a href="/2024/10/06/Build-Publish-a-Python-Package/" target="_self">
+              <a href="/2024/10/06/build-publish-a-python-package/" target="_self">
                 <i class="iconfont icon-chevronleft"></i>
                 <span>Prev</span>
               </a>
@@ -228,21 +207,21 @@ $$\text{cosine similarity} = \frac{\mathbf{v_1}\cdot\mathbf{v_f}}{|\mathbf{v_1}|
           <div class="post-attach">
             <span class="post-pubtime">
               <i class="iconfont icon-updatetime mr-10" title="Update time"></i>
-              2025-10-19 00:08:08
+              2026-02-04 18:53:17
             </span>
             
                   <span class="post-tags">
                     <i class="iconfont icon-tags mr-10" title="Tags"></i>
                     
                     <span class="span--tag mr-8">
-                      <a href="/tags/math/" title="math">
-                        #math
+                      <a href="/tags/skill/" title="skill">
+                        #skill
                       </a>
                     </span>
                     
                     <span class="span--tag mr-8">
-                      <a href="/tags/skill/" title="skill">
-                        #skill
+                      <a href="/tags/math/" title="math">
+                        #math
                       </a>
                     </span>
                     
@@ -251,7 +230,7 @@ $$\text{cosine similarity} = \frac{\mathbf{v_1}\cdot\mathbf{v_f}}{|\mathbf{v_1}|
           </div>
           <div class="post-foot-prev">
             
-              <a href="/2025/11/27/Update-Hexo-Blog/" target="_self">
+              <a href="/2025/11/27/update-hexo-blog/" target="_self">
                 <span>Next</span>
                 <i class="iconfont icon-chevronright"></i>
               </a>
@@ -565,12 +544,12 @@ $$\text{cosine similarity} = \frac{\mathbf{v_1}\cdot\mathbf{v_f}}{|\mathbf{v_1}|
       </a>
       <div class="share-content hidden">
         
-          <a class="share-item" href="https://twitter.com/intent/tweet?text=' + Better%20Understanding%20Dot%20Product%20-%20small%20hints + '&url=' + http%3A%2F%2Fangushushu.com%2F2024%2F10%2F26%2FBetter-Understanding-Dot-Product-hints%2F + '" target="_blank" title="Twitter">
+          <a class="share-item" href="https://twitter.com/intent/tweet?text=' + Why%20is%20the%20Dot%20Product%20related%20to%20Cosine%3F + '&url=' + http%3A%2F%2Fangushushu.com%2F2024%2F10%2F26%2Fwhy-is-the-dot-product-related-to-cosine%2F + '" target="_blank" title="Twitter">
             <i class="iconfont icon-twitter"></i>
           </a>
         
         
-          <a class="share-item" href="https://www.facebook.com/sharer.php?u=http://angushushu.com/2024/10/26/Better-Understanding-Dot-Product-hints/" target="_blank" title="Facebook">
+          <a class="share-item" href="https://www.facebook.com/sharer.php?u=http://angushushu.com/2024/10/26/why-is-the-dot-product-related-to-cosine/" target="_blank" title="Facebook">
             <i class="iconfont icon-facebooksquare"></i>
           </a>
         

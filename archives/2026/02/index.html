@@ -13,7 +13,7 @@
   
   <title>
     
-      Update Hexo Blog 
+      Blog: 2026/2 
       
       
       |
@@ -109,177 +109,148 @@
 
 
       <div class="flex-container">
-        <!-- 文章详情页，展示文章具体内容，url形式：https://yoursite/文章标题/ -->
-<!-- 同时为「标签tag」，「朋友friend」，「分类categories」，「关于about」页面的承载页面，具体展示取决于page.type -->
+        <!-- 归档页，展示本站所有文章，按照年份降序归类，url形式：https://yoursite/archives/ -->
 
+<!-- last: 按年份把文章分组，当前遍历到的年份 -->
+<!-- now: 当前遍历到的文章的发布年份 -->
 
-  <!-- LaTex Display -->
-
-  
-    <script async type="text/javascript" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
-  
-  <script>
-    MathJax = {
-      tex: {
-        inlineMath: [['$', '$'], ['\\(', '\\)']]
-      }
-    }
-  </script>
-
-
-
-
-
-  <!-- clipboard -->
-
-  
-    <script async type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.10/dist/clipboard.min.js"></script>
-  
-  
-<script src="/js/codeCopy.js"></script>
-
-
-
-
-
-
-
-  
-
-  
-  <!-- 文章内容页 url形式：https://yoursite/文章标题/ -->
-  <div class="container post-details" id="post-details">
-    <div class="post-content">
-      <div class="post-title">Update Hexo Blog</div>
-      <div class="post-attach">
-        <span class="post-pubtime">
-          <i class="iconfont icon-updatetime mr-10" title="Update time"></i>
-          2025-11-29 17:41:30
-        </span>
-        
-              <span class="post-tags">
-                <i class="iconfont icon-tags mr-10" title="Tags"></i>
-                
-                <span class="span--tag mr-8">
-                  <a href="/tags/skill/" title="skill">
-                    #skill
-                  </a>
-                </span>
-                
-              </span>
-          
-      </div>
-      <div class="markdown-body">
-        <p>This is a cheat sheet for updating your hexo blogs, which assumes you have already set up the theme.</p>
-<h2 id="Add-a-blog"><a href="#Add-a-blog" class="headerlink" title="Add a blog"></a>Add a blog</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new [layout] &lt;title&gt;</span><br></pre></td></tr></table></figure>
-
-<p>In my case I generally use <code>post</code> for layout, also since I’m using local environment I run commands with <code>npx</code>.</p>
-<h2 id="Build-Deploy"><a href="#Build-Deploy" class="headerlink" title="Build &amp; Deploy"></a>Build &amp; Deploy</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo clean &amp;&amp; hexo g</span><br></pre></td></tr></table></figure>
-<p>This will clean the old generated files and regenerate the static files.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo s</span><br></pre></td></tr></table></figure>
-<p>This allows you to preview locally.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo d <span class="comment"># or directly hexo clean &amp;&amp; hexo g &amp;&amp; hexo d</span></span><br></pre></td></tr></table></figure>
-<p>This will deploy the static files to the platform (should be configured in the _config.yml).</p>
-<hr>
-<p>For more detail check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">official docs</a></p>
-
-      </div>
-      
-        <div class="prev-or-next">
-          <div class="post-foot-next">
-            
-              <a href="/2024/10/26/why-is-the-dot-product-related-to-cosine/" target="_self">
-                <i class="iconfont icon-chevronleft"></i>
-                <span>Prev</span>
-              </a>
-            
-          </div>
-          <div class="post-attach">
-            <span class="post-pubtime">
-              <i class="iconfont icon-updatetime mr-10" title="Update time"></i>
-              2025-11-29 17:41:30
-            </span>
-            
-                  <span class="post-tags">
-                    <i class="iconfont icon-tags mr-10" title="Tags"></i>
-                    
-                    <span class="span--tag mr-8">
-                      <a href="/tags/skill/" title="skill">
-                        #skill
-                      </a>
-                    </span>
-                    
-                  </span>
-              
-          </div>
-          <div class="post-foot-prev">
-            
-              <a href="/2026/02/04/why-gradients-point-up/" target="_self">
-                <span>Next</span>
-                <i class="iconfont icon-chevronright"></i>
-              </a>
-            
-          </div>
+<div class="container archives">
+  <div class="post-list">
+    
+        <!-- 后续文章的发布年份呈现 -->
+        <div class="content-title">
+          <h2>
+            <span>2026</span>
+          </h2>
         </div>
       
-    </div>
+      <div class="post-item" title="Why Gradients Point Up?">
+        <div class="time-m-d">02-04</div>
+        <div class="title">
+          <a href="/2026/02/04/why-gradients-point-up/">
+            <span>Why Gradients Point Up?</span>
+          </a>
+        </div>
+      </div>
     
-  <div id="btn-catalog" class="btn-catalog">
-    <i class="iconfont icon-catalog"></i>
-  </div>
-  <div class="post-catalog hidden" id="catalog">
-    <div class="title">Contents</div>
-    <div class="catalog-content">
+        <!-- 后续文章的发布年份呈现 -->
+        <div class="content-title">
+          <h2>
+            <span>2025</span>
+          </h2>
+        </div>
       
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Add-a-blog"><span class="toc-text">Add a blog</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Build-Deploy"><span class="toc-text">Build &amp; Deploy</span></a></li></ol>
-      
-    </div>
-  </div>
-
-  
-<script src="/js/catalog.js"></script>
-
-
-
-
+      <div class="post-item" title="Update Hexo Blog">
+        <div class="time-m-d">11-27</div>
+        <div class="title">
+          <a href="/2025/11/27/update-hexo-blog/">
+            <span>Update Hexo Blog</span>
+          </a>
+        </div>
+      </div>
     
-      <div class="comments-container">
-        
-
-
-
-
-  
-    <script async type="text/javascript" src='https://cdn.jsdelivr.net/npm/valine@1.4.18/dist/Valine.min.js' onload="loadValineSuc(this)"></script>
-  
-
-  <div id="vcomments"></div>
-
-  <script>
-    function loadValineSuc() {
-      new Valine({
-        el: '#vcomments',
-        appId: 'W6AOGFAMyF4VAIziB8pX56Oe-gzGzoHsz',
-        appKey: 'QfZDVhjD2RHYdS4Kil8GMQWI',
-        placeholder: 'listening...',
-        avatar: 'retro',
-        lang: 'en'
-      })
-    }
-  </script>
-
-    <style>
-      .comments-container .v .vempty {
-        display: none!important;
-      }
-    </style>
-
-
-
-
+        <!-- 后续文章的发布年份呈现 -->
+        <div class="content-title">
+          <h2>
+            <span>2024</span>
+          </h2>
+        </div>
+      
+      <div class="post-item" title="Why is the Dot Product related to Cosine?">
+        <div class="time-m-d">10-26</div>
+        <div class="title">
+          <a href="/2024/10/26/why-is-the-dot-product-related-to-cosine/">
+            <span>Why is the Dot Product related to Cosine?</span>
+          </a>
+        </div>
+      </div>
+    
+      <div class="post-item" title="Build & Publish a Python Package">
+        <div class="time-m-d">10-06</div>
+        <div class="title">
+          <a href="/2024/10/06/build-publish-a-python-package/">
+            <span>Build & Publish a Python Package</span>
+          </a>
+        </div>
+      </div>
+    
+      <div class="post-item" title="一些想法">
+        <div class="time-m-d">02-05</div>
+        <div class="title">
+          <a href="/2024/02/05/%E4%B8%80%E4%BA%9B%E6%83%B3%E6%B3%95/">
+            <span>一些想法</span>
+          </a>
+        </div>
+      </div>
+    
+        <!-- 后续文章的发布年份呈现 -->
+        <div class="content-title">
+          <h2>
+            <span>2023</span>
+          </h2>
+        </div>
+      
+      <div class="post-item" title="Existing Models">
+        <div class="time-m-d">04-17</div>
+        <div class="title">
+          <a href="/2023/04/17/existing-models/">
+            <span>Existing Models</span>
+          </a>
+        </div>
+      </div>
+    
+      <div class="post-item" title="Structure - Elements">
+        <div class="time-m-d">02-09</div>
+        <div class="title">
+          <a href="/2023/02/09/structure-elements/">
+            <span>Structure - Elements</span>
+          </a>
+        </div>
+      </div>
+    
+      <div class="post-item" title="Process - Bases">
+        <div class="time-m-d">02-09</div>
+        <div class="title">
+          <a href="/2023/02/09/process-bases/">
+            <span>Process - Bases</span>
+          </a>
+        </div>
+      </div>
+    
+        <!-- 后续文章的发布年份呈现 -->
+        <div class="content-title">
+          <h2>
+            <span>2022</span>
+          </h2>
+        </div>
+      
+      <div class="post-item" title="Theory - Init">
+        <div class="time-m-d">10-20</div>
+        <div class="title">
+          <a href="/2022/10/20/theory-init/">
+            <span>Theory - Init</span>
+          </a>
+        </div>
+      </div>
+    
+        <!-- 后续文章的发布年份呈现 -->
+        <div class="content-title">
+          <h2>
+            <span>2021</span>
+          </h2>
+        </div>
+      
+      <div class="post-item" title="Music Time!">
+        <div class="time-m-d">12-31</div>
+        <div class="title">
+          <a href="/2021/12/31/playlists/">
+            <span>Music Time!</span>
+          </a>
+        </div>
       </div>
     
   </div>
+</div>
 
         
 <div class="footer">
@@ -538,24 +509,6 @@
 
 
         
-  
-    <div class="share-icon tools-bar-item">
-      <a href="javascript: void(0)" id="share-icon">
-        <i class="iconfont iconshare"></i>
-      </a>
-      <div class="share-content hidden">
-        
-          <a class="share-item" href="https://twitter.com/intent/tweet?text=' + Update%20Hexo%20Blog + '&url=' + http%3A%2F%2Fangushushu.com%2F2025%2F11%2F27%2Fupdate-hexo-blog%2F + '" target="_blank" title="Twitter">
-            <i class="iconfont icon-twitter"></i>
-          </a>
-        
-        
-          <a class="share-item" href="https://www.facebook.com/sharer.php?u=http://angushushu.com/2025/11/27/update-hexo-blog/" target="_blank" title="Facebook">
-            <i class="iconfont icon-facebooksquare"></i>
-          </a>
-        
-      </div>
-    </div>
   
   
 <script src="/js/shares.js"></script>

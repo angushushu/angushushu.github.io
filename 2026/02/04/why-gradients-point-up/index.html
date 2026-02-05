@@ -13,7 +13,7 @@
   
   <title>
     
-      Update Hexo Blog 
+      Why Gradients Point Up? 
       
       
       |
@@ -150,11 +150,11 @@
   <!-- 文章内容页 url形式：https://yoursite/文章标题/ -->
   <div class="container post-details" id="post-details">
     <div class="post-content">
-      <div class="post-title">Update Hexo Blog</div>
+      <div class="post-title">Why Gradients Point Up?</div>
       <div class="post-attach">
         <span class="post-pubtime">
           <i class="iconfont icon-updatetime mr-10" title="Update time"></i>
-          2025-11-29 17:41:30
+          2026-02-04 19:05:10
         </span>
         
               <span class="post-tags">
@@ -166,29 +166,27 @@
                   </a>
                 </span>
                 
+                <span class="span--tag mr-8">
+                  <a href="/tags/math/" title="math">
+                    #math
+                  </a>
+                </span>
+                
               </span>
           
       </div>
       <div class="markdown-body">
-        <p>This is a cheat sheet for updating your hexo blogs, which assumes you have already set up the theme.</p>
-<h2 id="Add-a-blog"><a href="#Add-a-blog" class="headerlink" title="Add a blog"></a>Add a blog</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new [layout] &lt;title&gt;</span><br></pre></td></tr></table></figure>
-
-<p>In my case I generally use <code>post</code> for layout, also since I’m using local environment I run commands with <code>npx</code>.</p>
-<h2 id="Build-Deploy"><a href="#Build-Deploy" class="headerlink" title="Build &amp; Deploy"></a>Build &amp; Deploy</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo clean &amp;&amp; hexo g</span><br></pre></td></tr></table></figure>
-<p>This will clean the old generated files and regenerate the static files.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo s</span><br></pre></td></tr></table></figure>
-<p>This allows you to preview locally.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo d <span class="comment"># or directly hexo clean &amp;&amp; hexo g &amp;&amp; hexo d</span></span><br></pre></td></tr></table></figure>
-<p>This will deploy the static files to the platform (should be configured in the _config.yml).</p>
-<hr>
-<p>For more detail check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">official docs</a></p>
+        <p>As what I recall when I learned about the gradient, I was taught that the gradient represents the vector with the direction of fastest climbing. I didn’t really understand it. It is known that $\frac{\partial f}{\partial x}$ represents the rate of change for $f$ at $x$, then shouldn’t the gradient just tell you the rate of change for each direction?</p>
+<p>I’m using $\nabla f &#x3D; a\mathbf{i} + b\mathbf{j}$ for instance, but it should also apply to higher dimensions.</p>
+<p>Proof: $\nabla f$ is in the direction where $f$ increases the fastest.</p>
+<p>Let the direction of the gradient be $\mathbf{u} &#x3D; \frac{\nabla f}{|\nabla f|}$.<br>Say $\nabla f$ is not the direction where $f$ increases the fastest. Then $\exists$ unit vector $\mathbf{v}$ s.t. the directional derivative along $\mathbf{v}$ is greater than the gradient’s magnitude<br>$$\mathbf{v} \cdot \nabla f &gt; |\nabla f|$$<br>So$$|\mathbf{v}| |\nabla f| \cos(\theta) &gt; |\nabla f| $$Since $\mathbf{v}$ is a unit vector, $|\mathbf{v}|&#x3D;1$ and $\cos(\theta) \leq 1$.<br>$\Rightarrow \Leftarrow$<br>Thus, $\nabla f$ is in the direction where $f$ increases the fastest.</p>
 
       </div>
       
         <div class="prev-or-next">
           <div class="post-foot-next">
             
-              <a href="/2024/10/26/why-is-the-dot-product-related-to-cosine/" target="_self">
+              <a href="/2025/11/27/update-hexo-blog/" target="_self">
                 <i class="iconfont icon-chevronleft"></i>
                 <span>Prev</span>
               </a>
@@ -197,7 +195,7 @@
           <div class="post-attach">
             <span class="post-pubtime">
               <i class="iconfont icon-updatetime mr-10" title="Update time"></i>
-              2025-11-29 17:41:30
+              2026-02-04 19:05:10
             </span>
             
                   <span class="post-tags">
@@ -209,38 +207,22 @@
                       </a>
                     </span>
                     
+                    <span class="span--tag mr-8">
+                      <a href="/tags/math/" title="math">
+                        #math
+                      </a>
+                    </span>
+                    
                   </span>
               
           </div>
           <div class="post-foot-prev">
-            
-              <a href="/2026/02/04/why-gradients-point-up/" target="_self">
-                <span>Next</span>
-                <i class="iconfont icon-chevronright"></i>
-              </a>
             
           </div>
         </div>
       
     </div>
     
-  <div id="btn-catalog" class="btn-catalog">
-    <i class="iconfont icon-catalog"></i>
-  </div>
-  <div class="post-catalog hidden" id="catalog">
-    <div class="title">Contents</div>
-    <div class="catalog-content">
-      
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Add-a-blog"><span class="toc-text">Add a blog</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Build-Deploy"><span class="toc-text">Build &amp; Deploy</span></a></li></ol>
-      
-    </div>
-  </div>
-
-  
-<script src="/js/catalog.js"></script>
-
-
-
 
     
       <div class="comments-container">
@@ -545,12 +527,12 @@
       </a>
       <div class="share-content hidden">
         
-          <a class="share-item" href="https://twitter.com/intent/tweet?text=' + Update%20Hexo%20Blog + '&url=' + http%3A%2F%2Fangushushu.com%2F2025%2F11%2F27%2Fupdate-hexo-blog%2F + '" target="_blank" title="Twitter">
+          <a class="share-item" href="https://twitter.com/intent/tweet?text=' + Why%20Gradients%20Point%20Up%3F + '&url=' + http%3A%2F%2Fangushushu.com%2F2026%2F02%2F04%2Fwhy-gradients-point-up%2F + '" target="_blank" title="Twitter">
             <i class="iconfont icon-twitter"></i>
           </a>
         
         
-          <a class="share-item" href="https://www.facebook.com/sharer.php?u=http://angushushu.com/2025/11/27/update-hexo-blog/" target="_blank" title="Facebook">
+          <a class="share-item" href="https://www.facebook.com/sharer.php?u=http://angushushu.com/2026/02/04/why-gradients-point-up/" target="_blank" title="Facebook">
             <i class="iconfont icon-facebooksquare"></i>
           </a>
         
