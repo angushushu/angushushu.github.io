@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>Why Gradients Point Up?</title>
+      <link href="/2026/02/04/why-gradients-point-up/"/>
+      <url>/2026/02/04/why-gradients-point-up/</url>
+      
+        <content type="html"><![CDATA[<p>As what I recall when I learned about the gradient, I was taught that the gradient represents the vector with the direction of fastest climbing. I didn’t really understand it. It is known that $\frac{\partial f}{\partial x}$ represents the rate of change for $f$ at $x$, then shouldn’t the gradient just tell you the rate of change for each direction?</p><p>I’m using $\nabla f &#x3D; a\mathbf{i} + b\mathbf{j}$ for instance, but it should also apply to higher dimensions.</p><p>Proof: $\nabla f$ is in the direction where $f$ increases the fastest.</p><p>Let the direction of the gradient be $\mathbf{u} &#x3D; \frac{\nabla f}{|\nabla f|}$.<br>Say $\nabla f$ is not the direction where $f$ increases the fastest. Then $\exists$ unit vector $\mathbf{v}$ s.t. the directional derivative along $\mathbf{v}$ is greater than the gradient’s magnitude<br>$$\mathbf{v} \cdot \nabla f &gt; |\nabla f|$$<br>So$$|\mathbf{v}| |\nabla f| \cos(\theta) &gt; |\nabla f| $$Since $\mathbf{v}$ is a unit vector, $|\mathbf{v}|&#x3D;1$ and $\cos(\theta) \leq 1$.<br>$\Rightarrow \Leftarrow$<br>Thus, $\nabla f$ is in the direction where $f$ increases the fastest.</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> skill </tag>
+            
+            <tag> math </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Update Hexo Blog</title>
+      <link href="/2025/11/27/update-hexo-blog/"/>
+      <url>/2025/11/27/update-hexo-blog/</url>
+      
+        <content type="html"><![CDATA[<p>This is a cheat sheet for updating your hexo blogs, which assumes you have already set up the theme.</p><h2 id="Add-a-blog"><a href="#Add-a-blog" class="headerlink" title="Add a blog"></a>Add a blog</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new [layout] &lt;title&gt;</span><br></pre></td></tr></table></figure><p>In my case I generally use <code>post</code> for layout, also since I’m using local environment I run commands with <code>npx</code>.</p><h2 id="Build-Deploy"><a href="#Build-Deploy" class="headerlink" title="Build &amp; Deploy"></a>Build &amp; Deploy</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo clean &amp;&amp; hexo g</span><br></pre></td></tr></table></figure><p>This will clean the old generated files and regenerate the static files.</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo s</span><br></pre></td></tr></table></figure><p>This allows you to preview locally.</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo d <span class="comment"># or directly hexo clean &amp;&amp; hexo g &amp;&amp; hexo d</span></span><br></pre></td></tr></table></figure><p>This will deploy the static files to the platform (should be configured in the _config.yml).</p><hr><p>For more detail check <a href="https://hexo.io/docs/">official docs</a></p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> skill </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Why is the Dot Product related to Cosine?</title>
+      <link href="/2024/10/26/why-is-the-dot-product-related-to-cosine/"/>
+      <url>/2024/10/26/why-is-the-dot-product-related-to-cosine/</url>
+      
+        <content type="html"><![CDATA[<p>Since graduating from my undergrad, much of my knowledge has faded. Recently, I’m reviewing some core concepts. Here I show an example of dot products for 2 vectors with length 2 to help understand the idea of dot product (not a proof).</p><p>Given $\mathbf{v_1} &#x3D; \begin{bmatrix} i_1 \ j_1 \end{bmatrix}, \mathbf{v_2} &#x3D; \begin{bmatrix} i_2 \ j_2 \end{bmatrix}$<br>Shown below:</p><table><thead><tr><th align="center">V1</th><th align="center">V2</th></tr></thead><tbody><tr><td align="center"><img src="/images/cross_prod_v1.jpg"></td><td align="center"><img src="/images/cross_prod_v2.jpg"></td></tr></tbody></table><p>So that dot product is<br>$$\begin{align} \mathbf{v_1} \cdot \mathbf{v_2} &amp; &#x3D; i_1\cdot i_2 + j_1\cdot j_2 \<br>        &amp; &#x3D; |\mathbf{v_1}|\sin\theta_1\cdot|\mathbf{v_2}|\sin \theta_2 + |\mathbf{v_1}|\cos\theta_1\cdot|\mathbf{v_2}|\cos \theta_2\<br>        &amp; &#x3D; |\mathbf{v_1}||\mathbf{v_2}|(\sin\theta_1\cdot\sin\theta_2+\cos\theta_1\cdot\cos\theta_2)\end{align}$$<br>Then by cosine identity, which is $\cos(\theta_1-\theta_2) &#x3D; \cos\theta_1\cdot\cos\theta_2+\sin\theta_1\cdot\sin\theta_2$, we get<br>$$\begin{align} \mathbf{v_1} \cdot \mathbf{v_2} &amp; &#x3D; |\mathbf{v_1}||\mathbf{v_2}|\cos(\theta_1-\theta_2) \<br>    &amp; &#x3D; |\mathbf{v_1}||\mathbf{v_2}|\cos(\Delta\theta) \<br>    &amp; &#x3D; |\mathbf{v_1}|\cos(\Delta\theta)\cdot|\mathbf{v_2}|\end{align}$$<br>When put two vectors together, we see the intuitive meaning of it, which is multiplication of the length of projection of $\mathbf{v_1}$ on $\mathbf{v_2}$ with the length of $\mathbf{v_2}$.<br><img src="/images/cross_prod_3.jpg"><br>Which is a scale related to the angle between two vectors (more specifically, in what degree they are in the same line) and the length between them. So when people only care about the level of parallel, they do cosine similarity:<br>$$\text{cosine similarity} &#x3D; \frac{\mathbf{v_1}\cdot\mathbf{v_2}}{|\mathbf{v_1}||\mathbf{v_2}|} &#x3D; \cos(\Delta\theta)$$<br>Hope this example helps you build more <strong>intuition</strong> about the operation, it does for me a little bit. If not, let’s go through an real life example:<br><img src="/images/anti_gravity_lean.jpg"><br>Imagine MJ performing his famous Anti-Gravity Lean over a line drawn on the ground. Let MJ be $\mathbf{v_1}$ and the line be $\mathbf{v_2}$ (we view from aside), there’s sunshine above MJ head. We observe this performance from a location orthogonal to the plane formed by standing MJ and the line. $\cos\Delta\theta\cdot\mathbf{v_1}$ is the shadow of MJ on the line, the closer MJ is to being parallel with the line (the floor), the longer his shadow becomes, and therefore the larger the dot product of MJ and the line would be.<br>To MJ, the dot product might be something correlated to his sense of the length of the line (when the line is beneath him). Since the more parallel they are, the longer the line is in his eyes.</p><p>Note: this is not a formal proof, for formal proof you can see <a href="https://tutorial.math.lamar.edu/classes/calcii/dotproduct.aspx">here</a></p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> skill </tag>
+            
+            <tag> math </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Build &amp; Publish a Python Package</title>
+      <link href="/2024/10/06/build-publish-a-python-package/"/>
+      <url>/2024/10/06/build-publish-a-python-package/</url>
+      
+        <content type="html"><![CDATA[<h2 id="Build"><a href="#Build" class="headerlink" title="Build"></a>Build</h2><p>Prepare setup.py<br>An example:</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> setuptools <span class="keyword">import</span> find_packages, setup</span><br><span class="line">  </span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&quot;README.md&quot;</span>, <span class="string">&quot;r&quot;</span>) <span class="keyword">as</span> f:  </span><br><span class="line">    long_description = f.read()  </span><br><span class="line">  </span><br><span class="line">setup(  </span><br><span class="line">    name=<span class="string">&#x27;&lt;package&gt;&#x27;</span>,  </span><br><span class="line">    version=<span class="string">&#x27;0.0.1&#x27;</span>,  <span class="comment"># update this if you are updating new version</span></span><br><span class="line">    description=<span class="string">&#x27;&#x27;</span>,  </span><br><span class="line">    packages=find_packages(include=[<span class="string">&#x27;&lt;package&gt;&#x27;</span>, <span class="string">&#x27;&lt;package&gt;.*&#x27;</span>]),  </span><br><span class="line">    long_description=long_description,  </span><br><span class="line">    long_description_content_type=<span class="string">&quot;text/markdown&quot;</span>,  </span><br><span class="line">    url=<span class="string">&#x27;&#x27;</span>,  </span><br><span class="line">    author=<span class="string">&#x27;&#x27;</span>,  </span><br><span class="line">    author_email=<span class="string">&#x27;&#x27;</span>,  </span><br><span class="line">    license=<span class="string">&#x27;GPL-3.0&#x27;</span>,  </span><br><span class="line">    classifiers=[  </span><br><span class="line">        <span class="string">&quot;Programming Language :: Python :: 3&quot;</span>,  </span><br><span class="line">        <span class="string">&quot;License :: OSI Approved :: GNU General Public License v3 (GPLv3)&quot;</span>,  </span><br><span class="line">        <span class="string">&quot;Operating System :: OS Independent&quot;</span>,  </span><br><span class="line">    ],  </span><br><span class="line">    install_requires=[  </span><br><span class="line">        <span class="string">&#x27;pandas&#x27;</span>,   </span><br><span class="line">        <span class="string">&#x27;numpy&#x27;</span> </span><br><span class="line">    ],  </span><br><span class="line">    extras_require=&#123;  </span><br><span class="line">        <span class="string">&#x27;all&#x27;</span>: [],  </span><br><span class="line">        <span class="string">&#x27;dev&#x27;</span>: [<span class="string">&#x27;pytest&gt;=7.0&#x27;</span>, <span class="string">&#x27;twine&gt;=4.0.2&#x27;</span>]  </span><br><span class="line">    &#125;,  </span><br><span class="line">    python_requires=<span class="string">&#x27;&gt;=3.6&#x27;</span>,  </span><br><span class="line">)</span><br></pre></td></tr></table></figure><p>If you have previous build, remember to clean them up by</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">rm</span> -rf dist build *.egg-info</span><br></pre></td></tr></table></figure><p>run</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">python -m build <span class="comment"># recommended, requires &quot;build&quot; package</span></span><br><span class="line"><span class="comment"># or</span></span><br><span class="line">python setup.py bdist_wheel sdist</span><br></pre></td></tr></table></figure><p>(optional) to test package locally</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install .</span><br></pre></td></tr></table></figure><h2 id="Publish"><a href="#Publish" class="headerlink" title="Publish"></a>Publish</h2><p>Setup info on <a href="https://test.pypi.org/">test.pypi</a> or <a href="https://pypi.org/">pypi</a> if not yet. The API key for publishing can be found there.</p><p>check:</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">twine check dist/* <span class="comment"># requires &quot;twine&quot; package</span></span><br></pre></td></tr></table></figure><p>publish to test.pypi:</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">twine upload -r testpypi dist/*</span><br></pre></td></tr></table></figure><p>publish to pypi:</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">twine upload dist/*</span><br></pre></td></tr></table></figure><hr><p>For more detail check <a href="https://www.youtube.com/watch?v=5KEObONUkik&t=918s">Youtube tutorial</a></p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> skill </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>一些想法</title>
+      <link href="/2024/02/05/%E4%B8%80%E4%BA%9B%E6%83%B3%E6%B3%95/"/>
+      <url>/2024/02/05/%E4%B8%80%E4%BA%9B%E6%83%B3%E6%B3%95/</url>
+      
+        <content type="html"><![CDATA[<h2 id="四类人"><a href="#四类人" class="headerlink" title="四类人"></a>四类人</h2><p>一人之下里的全性掌门无根生把人分为四大类：无术无道，有术无道，有道无术，以及有术有道。我自然是希望做第四类人的，因此一直以来我认为我走在求道的路上，并且是在正确的路上。而术，则正是我现在所学的内容。</p><h2 id="道"><a href="#道" class="headerlink" title="道"></a>道</h2><p>我的道十分简单，即是为了一种理想的社会的存在而努力着。这个道是在以下的假设之上而构建的：社会的核心是人，而大多数人的大多数行为都是被约束的。约束他们行为的，狭义上说是法律与道德，广义上说即是文化。简化的定义文化，就是一个群体共享的关于对于不同当前状态到达不同目标状态的路径以及目标的集合。在此假设之上，我的道是寻找如何高效的把文化传播到个体。我目前的专注方向是叙事。至于传播的内容，我现在不会也没有资格去管，不要好为人师嘛。</p><p><img src="/images/sticker1.jpg" alt="sticker1"></p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> thoughts </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Existing Models</title>
+      <link href="/2023/04/17/existing-models/"/>
+      <url>/2023/04/17/existing-models/</url>
+      
+        <content type="html"><![CDATA[<p>I’ve found several existing models.</p><ul><li>Psi-thoery by Dietrich Dörner et al</li><li>OpenCog by Ben Goertzel et al</li></ul><p>The structure of both has some similarities with mine. The quad of psi has similar features as the representations in my model, which include the sur&#x2F;sub connection (corresponding to Connection 1) and a motor-state graph (corresponding to Connection 2). However, I just notice these two models so might take time to understand them.</p><p>One note: both models, especially OpenCog focus on creating AGI, whereas my model is less focused on AI stuff but more about providing a cognitive (which indicates that it is not equivalent to neurological models) framework to better understand the human psychological processes. Another thing is that LLMs like ChatGpt is very popular recently and people consider it the best approach to AGI. I don’t have much opinion on that since I’m not an AI expert, but if our goal is understanding humans, I still prefer an explanatory model that relies less on statistics.</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> theory </tag>
+            
+            <tag> model </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Process - Bases</title>
+      <link href="/2023/02/09/process-bases/"/>
+      <url>/2023/02/09/process-bases/</url>
+      
+        <content type="html"><![CDATA[<p>Given the structure, processes are possible to be discussed. The relationship between structure and process can be considered as the relation between hardware and software. Anyhow, we have the structure ready and ready to start to talk about the processes.</p><h3 id="NOTE"><a href="#NOTE" class="headerlink" title="NOTE"></a>NOTE</h3><blockquote><p>Before we start, I want to emphasize that, all we are discussing here are theories not supported by evidence. Part of the theory may have been supported because they overlap with other existing theories that has been supported by empirical evidences.<br>The structures and processes we discussed here are constructs that may not be directly reflected by neurological findings. However, since we are simulating human behavior and mind, which is based on neurological activity, let’s assume there is a homeomorphism even if no homomorphism between them (this is an imprecise metaphor).</p></blockquote><p>One interesting observation is that the features of graphs have provided us with many potential operations, which can help us generate possible processes. The reason for processes to exist is to explain phenomena, thus I’ll list the mechanisms by showing cases of phenomena.</p><h1 id="Bases"><a href="#Bases" class="headerlink" title="Bases"></a>Bases</h1><h2 id="1-Needs-Motivation"><a href="#1-Needs-Motivation" class="headerlink" title="1. Needs&#x2F;Motivation"></a>1. Needs&#x2F;Motivation</h2><p>The definition of needs and motivation is debatable and there are many theories about them. It’s hard to define because it doesn’t reflect any phenomenon directly but abstract features shared by phenomena. Therefore I’ll define it with mechanisms established via our structure, and we will see whether the phenomena with “needs”&#x2F;“motivation” involved match the consequences of the mechanisms.</p><p>Here, let’s define needs&#x2F;motivation as a goal or a set of goals. Using the physiological need of Maslow’s Hierarchy of needs as an example, it can contain multiple constructs such as the sufficiency of food or drink, the sufficiency of sexual behavior, avoidance of harm, and others. Whereas each construct can be represented as a set of states or representations (here representation and state are interchangeable since they will end up involved in connection 2 <a href="/2023/02/09/structure-elements/" title="Structure - Elements">Structure - Elements</a>). Then, we can define either the set of states for each construct as a need or the union of the sets of states for multiple constructs as a need.</p><h3 id="1-1-Behaviors-Driven-by-Needs"><a href="#1-1-Behaviors-Driven-by-Needs" class="headerlink" title="1.1 Behaviors Driven by Needs"></a>1.1 Behaviors Driven by Needs</h3><p>Generally, Needs or Motivation are recognized as a driver of behaviors. In the framework, this is demonstrated by connection 2, where almost (I’m using this because there are some more complicated mechanisms) every action is driven by needs. More specifically, people are using the graph of connection 2 as a guide for their behavior, either consciously or unconsciously. We will discuss the mechanisms in the future, but the main idea here is connections provide the gravity of needs, and the flow of action demonstrated this gravity.</p><h3 id="1-2-Directional-Relation-Between-Needs"><a href="#1-2-Directional-Relation-Between-Needs" class="headerlink" title="1.2 Directional Relation Between Needs"></a>1.2 Directional Relation Between Needs</h3><p>In multiple theories of needs or motivation, there is a hierarchical structure (e.g. <a href="https://en.wikipedia.org/wiki/Maslow%27s_hierarchy_of_needs">Maslow’s hierarchy of needs</a> and <a href="https://en.wikipedia.org/wiki/Psi-theory">Dörner’s theory of motivation from the Psi Theory</a>). I’m not introducing the theories here. However, I’d like to consider this relationship between different levels of needs as a directional relationship rather than a hierarchical relationship, since a directional relationship can lead to a more flexible structure.</p><p>In Maslow’s hierarchy of needs, the sufficiency of safety increases the possibility of completing one’s physiological needs. Also, for social animals, the sufficiency of social needs indicates more protection and benefits from society and thus a higher level of safety.</p><p>Similarly, considering the five basic human needs in Dörner’s theory of motivation, the sufficiency of existential needs (thirst, hunger, and pain avoidance) provides the possibility of behaviors that may lead to the sufficiency of sexual needs (sexual behavior). Also, the sufficiency of certainty provides confidence in actions required in the process of completing the need for competence. In this case, the directional relationship can be considered a multilevel structure of states, where the sufficiency of higher-level needs provides a higher chance of completing the lower level.</p><p>One issue from this directional relation is that people sometimes can focus on behaviors completing the higher-level needs but damage low-level needs. That may indicate, different needs can not be simply connected by connection 2 or there is some restriction of consequence prediction when people plan for behaviors. We will deeply discuss this in the future, but here we just need to realize the directional relation exists between needs.</p><h2 id="2-Knowledge"><a href="#2-Knowledge" class="headerlink" title="2. Knowledge"></a>2. Knowledge</h2><p>When talking about knowledge, we are talking about memory. In the framework, any memory is represented by a combination of connections and basic elements. These can be categorized into the knowledge of actions, representations (connection 1), and solutions (path of states that, are connected by connection 2). The knowledge of action corresponds to not only procedural memory, which is how the involvement of consciousness distinguished them and how can we represent them in our models. The knowledge of representations and connection 1 corresponds to semantic knowledge (if we want, we can even bring it to the perceptual and sensual level). In the end, the knowledge of solutions and connection 2, knowledge of strategies and solutions can be mapped to the knowledge of strategies and solutions. We won’t discuss how this knowledge function to fit into contemporary cognitive theories of memory and knowledge in this section but will spend more time on such discussion when we get to the blocks of implementations (since the framework only provides the ideas, and there will be multiple ways to implement the ideas, each implementation may provide a different explanation on phenomena).</p><h2 id="3-Problem-Solving"><a href="#3-Problem-Solving" class="headerlink" title="3. Problem-Solving"></a>3. Problem-Solving</h2><p>Problem-solving is an outcome of knowledge and needs. I assume that is the meaning of the existence of individuals. Without the ability to solve problems, actions will lose their meaning and the social meaning of individuals will not be accomplished. To be able to solve problems, an individual needs to be able to recognize the problem&#x2F;situation (matching of states), assign the goal (based on contemporary goal, which is induced by connection 2 from needs), and search for solutions (select the path that connects current state and the goal state).</p><h3 id="3-1-Exploitation-Exploration"><a href="#3-1-Exploitation-Exploration" class="headerlink" title="3.1 Exploitation &amp; Exploration"></a>3.1 Exploitation &amp; Exploration</h3><p>The knowledge about the consequences of actions under different states is earned by trying and exploring. Exploitation and exploration demonstrate the idea of trial and error. This is the concept used in reinforcement learning, where exploitation indicates the agent applies actions it has successfully used for new situations and exploration indicates the gent trying new actions to the situation. The graph model will simulate this phenomenon by matching confronted situations to stored states, where the matching provides a continuous range between exploitation and exploration.</p><h2 id="4-Consolidation-Development"><a href="#4-Consolidation-Development" class="headerlink" title="4. Consolidation &amp; Development"></a>4. Consolidation &amp; Development</h2><p>People’s memory is consolidated in the background even if they don’t retrieve or apply the knowledge actively. Similarly, there should be a process of the model simulating such process. Currently, the idea is using the functionality of a state (which is, a representation) for consolidation. I consider it a combination of the selection process and conditional function, which picks two paths first and then compares its middle parts and two ends. We shall talk more about these mechanisms in the future.</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> theory </tag>
+            
+            <tag> model </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Structure - Elements</title>
+      <link href="/2023/02/09/structure-elements/"/>
+      <url>/2023/02/09/structure-elements/</url>
+      
+        <content type="html"><![CDATA[<center><img src="/images/struct_example.png" width="500">naive example of the structure</center>Above is a naive example that shows the main component of the potential model: the connections between representations, and the connections between states (by actions). There will be a lot of features needed to be adjusted, just providing an insight into the model.<h1 id="Elements"><a href="#Elements" class="headerlink" title="Elements"></a>Elements</h1><p>The two main elements required to generate this structure are representations (set of representations), and actions (sequence of actions). The finest elements of them (without elements constructing them) are the representation units and action units. These elements are connected by two types of connection, let’s call them connection 1 and connection 2. Connection 1 is intended to simulate semantic memory, priming, activation of knowledge, etc. Connection 2 is intended to simulate procedural memory, knowledge of problem-solving, etc. Connection 2 is always directed, but the features of Connection 1 will need more discussion.</p><h2 id="1-Representation"><a href="#1-Representation" class="headerlink" title="1 Representation"></a>1 Representation</h2><p>Representation is an abstract but simple concept. It’s a set of certain information (elements), and the elements within a representation can be representation units, representations, ordered pairs of representations, or actions. You can consider it as a node in an artificial neural network that explicitly states its meaning (which makes the model more explanatory).</p><h3 id="1-1-Representation-Unit"><a href="#1-1-Representation-Unit" class="headerlink" title="1.1 Representation Unit"></a>1.1 Representation Unit</h3><p>A representation unit is the most basic unit of representation, which contains nothing. You can consider it as a sensory unit, which provides information by itself. In the implementation, representation is more like a starting point of the model, the implementer of the model could determine its level of specificity. For instance, in discourse psychology, a representation unit can be a letter, a word, or a thought unit.</p><h3 id="1-2-State"><a href="#1-2-State" class="headerlink" title="1.2 State"></a>1.2 State</h3><p>A state is a representation in connection 2. Consider the experience of feeling hungry and finishing your meal, these are two states. It is a set of representations that might provide you with an experience. I’m using “might” here because it’s not guaranteed that any state would provide you with an experience, some of the states are generally retrieved unconsciously and thus cannot be experienced (if we define experience as something involving consciousness). </p><h3 id="1-3-Goal"><a href="#1-3-Goal" class="headerlink" title="1.3 Goal"></a>1.3 Goal</h3><p>A goal is a desired state. That is, it involves connection 2. To make it more specific, we define it as a sink (without outgoing edges) representation in connection 2. That is, consider the case you feel hungry, and it is connected to a state of fullness. In a bigger graph of connection 2, where the state of full is pointing to a state of survival, the state of full cannot be considered as a goal. However, when we extract the subgraph, in which the state of full is pointing to nothing, it can then be considered as a goal.</p><h2 id="2-Action"><a href="#2-Action" class="headerlink" title="2 Action"></a>2 Action</h2><p>An action is an activity that leads individuals to change their state. Creature won’t be able to generate movement with only observations of states. Thus, action is essential. I identify two types of action, physical and mental. However, how to define action precisely still faces some issues and we will introduce the issues later. Currently, let’s define an action as a list of actions.</p><h3 id="2-1-Action-Unit"><a href="#2-1-Action-Unit" class="headerlink" title="2.1 Action Unit"></a>2.1 Action Unit</h3><p>An action unit is the minimal unit of action, which contains nothing but represents a single individual change (physical or mental).</p><h3 id="2-1-Physical-Action"><a href="#2-1-Physical-Action" class="headerlink" title="2.1 Physical Action"></a>2.1 Physical Action</h3><p>Physical action is straightforward, any movement of muscle can be considered physical activity. Thus physical actions have a strong relationship with the motor system. Generally, we can use the easy definition of action for physical activity. Consider the action of drinking water, it can include multiple actions such as picking up a bottle and pouring the water into your mouth. However, if we consider the action unit as the firing of our motor neurons, there might be some parallel action. Thus it might be better to use the graph to represent actions.</p><h3 id="2-2-Mental-Action"><a href="#2-2-Mental-Action" class="headerlink" title="2.2 Mental Action"></a>2.2 Mental Action</h3><p>Mental action indicates mental functions, such as solving a math problem or thinking about philosophical problems. Similar to physical activity, it can be considered as a list of actions in the simple case. However, in most cases, there might be function calling or parallel actions going on. Also, there might be an information passing issue for the function calling of parallel actions, that is, how does an action distribute its input to multiple subactions? Mental action can be much more complicated than physical action, thus it is worth more discussion about how to implement mental action in the future.</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> theory </tag>
+            
+            <tag> model </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Theory - Init</title>
+      <link href="/2022/10/20/theory-init/"/>
+      <url>/2022/10/20/theory-init/</url>
+      
+        <content type="html"><![CDATA[<h1 id="What-for"><a href="#What-for" class="headerlink" title="What for"></a>What for</h1><p>Perhaps it would be a dream for most psychologists to construct a model to simulate all behaviors and cognitive processes of human beings.<br>It would not be impossible to fully achieve this goal, but we can gradually approach it by setting a more basic goal: create a creature that demonstrates some core features of human beings and other organisms. Who doesn’t want to be a god?</p><h1 id="What-is-a-creature"><a href="#What-is-a-creature" class="headerlink" title="What is a creature"></a>What is a creature</h1><p>Then we get a question: what is a creature?<br>Let’s say, a creature is something that performs actions, based on certain needs. The ultimate need of a creature is to maintain its blueprint.<br>I don’t want to discuss where this definition comes from now, but let’s start with it.</p><h1 id="Potential-model"><a href="#Potential-model" class="headerlink" title="Potential model"></a>Potential model</h1><p>Now we have the two core factors of the creature we want to construct: need and action. When I was in middle school, I called them “sensibility” and “rationality” and my understanding of the relation between them was:</p><center><img src="/images/0.png" width="300">inside out</center>In high school, I replaced "sensibility" with "needs" and "rationality" with "methods" (now "actions"). The terminology is not important, you get the idea. With this basic idea, we can start our journey of creating.Before that, I want to say, every model consists of certain static structures and dynamic processes. We will use directed graphs as our static structure.<h1 id="Now-we-can-start"><a href="#Now-we-can-start" class="headerlink" title="Now we can start"></a>Now we can start</h1><ol><li><a href="/2023/02/09/structure-elements/" title="Structure - Elements">Structure - Elements</a></li><li><a href="/2023/02/09/process-bases/" title="Process - Bases">Process - Bases</a></li></ol>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> theory </tag>
+            
+            <tag> model </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Music Time!</title>
+      <link href="/2021/12/31/playlists/"/>
+      <url>/2021/12/31/playlists/</url>
+      
+        <content type="html"><![CDATA[<p><a href="https://www.youtube.com/playlist?list=PLBFR62-14ItltucyGPoAHxL_gQOu0Q-Wi">Shu’s OST playlist</a><br><a href="https://www.youtube.com/playlist?list=PLBFR62-14ItlS-6Y99xPLCisbScvPX8xm">Shu’s Song playlist</a><br><a href="https://space.bilibili.com/5054022/favlist?fid=1037697422&ftype=create&spm_id_from=333.1007.0.0">Some random music</a></p><p>Leave your recommendation in the comment</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+  
+  
+    
+    
+    <entry>
+      <title>About</title>
+      <link href="/index.html"/>
+      <url>/index.html</url>
+      
+        <content type="html"><![CDATA[<style>.link {    color: #4f8aff !important;    text-decoration: none !important;    border-bottom: none !important;}.link:hover {    font-weight: bold !important;}#head {  transition: transform .5s ease-in-out;  border: 1px solid;}@keyframes swingSmooth {  0%, 100% { transform: rotate(0deg); }  25% { transform: rotate(5deg); }  50% { transform: rotate(0deg); }  75% { transform: rotate(-5deg); }}#head:hover {  display: block;  animation: swingSmooth 1s ease-in-out infinite;  transform-origin: 50% 100%; /* 设置旋转的基点为图片底部中心 */}#head-box {    max-width: 15rem;    max-height: 15rem;    display: flex;    align-items: flex-end;}</style><div>    <div style="margin:0 auto; display: flex; max-width: 40rem; height: auto;">        <div id="head-box">            <img id="head" style="background-color:transparent" src="/images/head.png" alt="angushushu's skull"></img>        </div>        <div style="padding-left:1rem;max-width:27rem;height:auto;display:flex;align-items:flex-end">            <div style="max-width:27rem;height:auto;line-height:2.4rem;font-size:1.8rem">                <b>NAME: Shu Hu </b><br>                <b>EMAIL:shu13@gsu.edu</b><br>                <b>angushushu@outlook.com</b><br>                <a href="https://github.com/Angushushu" target="_blank" class="link"><b>Github</b>                </a><a href="/files/Shu_CV.pdf" target="_blank" class="link"><b>CV</b>                </a><a href="/2021/12/31/playlists/" target="_blank" class="link"><b>Playlist</b></a>            </div>        </div>    </div></div><br/><p>Hi, I’m a Ph.D. student at Prof. <a href="https://education.gsu.edu/profile/joe-magliano/" target="_blank" class="link">Joseph P. Magliano</a>‘s <a href="https://mediacomplab.com" target="_blank" class="link">Media Comprehension Lab</a>. I received my BS degree in Psych, CS, and Math, and a certificate in Digital Cinema Production from UW-Madison. Previously, I worked at Prof. <a href="https://edpsych.education.wisc.edu/staff/matthews-percival/" target="_blank" class="link">Percival Matthews</a>‘ <a href="https://web.education.wisc.edu/pmatthews/" target="_blank" class="link">MELD Lab</a> as a Research Assistant. I’m also collaborating with <a href="https://luanlingfei.com/" target="_blank" class="link">Lingfei Luan</a> and <a href="https://www.researchgate.net/profile/Lucia-Cores-Sarria" target="_blank" class="link">Lucía Cores Sarría</a> on film perception studies.</p><iframe style="border:none;" src="/images/3d_graph.html" width="100%" height="400"></iframe><blockquote><p><small><strong>Research Interests</strong>: Narrative Experience, Goals, Decision-Making, Emotion, Computational Models, etc</small></p></blockquote><p>Random Stuff: <a href="https://gemocracy.org">Gemocracy</a> <a href="https://keypiano.app">KeyPiano</a> <a href="https://cubexmc.top">CubeX</a></p>]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>tags</title>
+      <link href="/tags/index.html"/>
+      <url>/tags/index.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Writings</title>
+      <link href="/writings/index.html"/>
+      <url>/writings/index.html</url>
+      
+        <content type="html"><![CDATA[<h3 id="Publication"><a href="#Publication" class="headerlink" title="Publication:"></a>Publication:</h3><p><a href="https://www.berghahnjournals.com/view/journals/projections/aop/proj.2025.1211OF2/proj.2025.1211OF2.xml">Quantitative Studies on Color and Film Genres</a><br><a href="https://www.researchgate.net/publication/397313894_Think-aloud_verbal_protocols_and_natural_language_processing_to_capture_coherence_building_across_narrative_media">Think-aloud verbal protocols and natural language processing to capture coherence building across narrative media</a><br><a href="https://www.researchgate.net/publication/395634678_Narrative_Experience_Taxonomy_expanding_think-aloud_analysis_for_narrative_experiences">Narrative Experience Taxonomy: expanding think-aloud analysis for narrative experiences</a><br><a href="https://www.researchgate.net/publication/380940916_Exploring_the_affordances_of_text_and_picture_stories">Exploring the affordances of text and picture stories</a><br><a href="https://www.researchgate.net/publication/380396691_Exploring_the_Cognitive_Dynamics_of_Artificial_Intelligence_in_the_Post-COVID-_19_and_Learning_30_Era_A_Case_Study_of_ChatGPT">Exploring the Cognitive Dynamics of Artificial Intelligence in the Post-COVID- 19 and Learning 3.0 Era: A Case Study of ChatGPT</a><br><a href="https://www.researchgate.net/publication/360674450_Introducing_Cognitive_Psychology_in_Film_Studies_Redefining_Affordance">Introducing Cognitive Psychology in Film Studies: Redefining Affordance</a><br><a href="https://www.researchgate.net/publication/374416457_2021nianshujiadang10budianyinglianghuaheshouzhongfenxidekuaxuekeyanjiu_luanlingfei">2021年暑期档10部电影分析–基于电影内容量化和受众分析的跨学科研究(An Analysis of 10 Films in Summer Film Market 2021——An Interdisciplinary Study Based on Film Content Quantification and Audience Analysis)</a></p><h3 id="Psychology"><a href="#Psychology" class="headerlink" title="Psychology:"></a>Psychology:</h3><p><a href="/files/Prediction_in_Narrative_Reading_A_Brief_Review.pdf">Review: Prediction in Narrative Reading: A Brief Review</a><br><a href="/files/L&L_day.pdf">(Poster) Connecting Events: Bridging and Predictive Mechanisms in Event Cognition</a><br><a href="/files/STD2024_Shu.pdf">(Poster) “Frog, don’t do that!”: An exploration of the impact of media on comprehension and participation in narrative experiences</a><br><a href="/files/ALRC_poster.pdf">(Poster) The impact of media on coherence building</a><br><a href="/files/SCiP_2023.pdf">(Poster) Decoding Narrative Discourse: A Computational Exploration of Media Modality Effects</a><br><a href="/files/Role_of_Goals_in_Narrative_Experience.pdf">Review: Role of Goals in Narrative Experience</a><br><a href="/files/Film_in_Memory.pdf">Review: Film in Memory</a><br><a href="/files/Economic_Inequality_and_Social_Stability.pdf">Review: Economic Inequality and Social Stability</a><br><a href="/files/The_Relationship_Between_Preference_and_Familiar-Novel_Level.pdf">Proposal: The Relationship Between Preference and Familiar-Novel Level</a><br><a href="/files/Proposal_Poster.pdf">(Poster) The Relationship Between Preference and Familiar-Novel Level</a></p><h3 id="Screenplay"><a href="#Screenplay" class="headerlink" title="Screenplay:"></a>Screenplay:</h3><p><a href="/files/Normal_Days.pdf">Original script: Normal Days</a><br><a href="/files/The_Hanging_Stranger.pdf">Adaptive script: The Hanging Stranger</a></p>]]></content>
+      
+    </entry>
+    
+    
+  
+</search>

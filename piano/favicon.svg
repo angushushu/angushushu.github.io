@@ -1,0 +1,13 @@
+
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#eab308" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  {/* Outer Frame with subtle background fill */}
+  <rect x="2" y="4" width="20" height="16" rx="2" fill="#eab308" fill-opacity="0.1"/>
+  
+  {/* Black Keys (Solid Yellow) */}
+  <path d="M6 4v8h4V4" fill="#eab308" stroke="none" />
+  <path d="M14 4v8h4V4" fill="#eab308" stroke="none" />
+  
+  {/* White Key Separators */}
+  <path d="M8 12v8" />
+  <path d="M16 12v8" />
+</svg>

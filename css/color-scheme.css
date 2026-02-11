@@ -1,0 +1,73 @@
+/* light scheme */
+:root[color-mode="light"] {
+  --bg-body: #FFFFFF;
+  --color-text-base: #666;
+  --color-text-a: #666;
+  --color-text-a-hover: #000000;
+  --color-text-a-active: #000000;
+  --color-text-sub: #8e8e8e;
+  --color-text-md-title: #24292e;
+  --color-text-md-content: #24292e;
+  --color-text-md-code: #e96900;
+  --bg-text-md-code: #f8f8f8;
+  --bg-block-md-quote: #EEEEEE;
+  --color-block-md-quote: #555555;
+  --color-divider-md-border: #5858581a;
+  --bg-content-search: rgba(255, 255, 255, 0.6);
+  --bg-block-md-pre: #e6e6e6;
+  --color-text-md-pre: #555555;
+  --bg-block-md-table: #ffffff;
+  --bg-block-md-table-2: #f6f8fa;
+  --color-border-md-table: #dfe2e5;
+  
+  /* highlight added for code block */
+  --hl-background: #f6f8fa;
+  --hl-foreground: #24292e;
+  --hl-gutter-bg: #f6f8fa;
+  --hl-gutter-color: #959da5;
+  --hl-comment: #6a737d;
+  --hl-red: #d73a49;
+  --hl-orange: #e36209;
+  --hl-green: #22863a;
+  --hl-blue: #005cc5;
+  --hl-purple: #6f42c1;
+  --hl-cyan: #005cc5;
+  --hl-marked-line: #e6ffed;
+}
+
+/* dark scheme */
+:root[color-mode="dark"] {
+  --bg-body: #000000;
+  --color-text-base: #C1C2C5;
+  --color-text-a: #C1C2C5;
+  --color-text-a-hover: #FFFFFF;
+  --color-text-a-active: #FFFFFF;
+  --color-text-sub: #8e8e8e;
+  --color-text-md-title: #eceff4;
+  --color-text-md-content: #eceff4;
+  --color-text-md-code: #e96900;
+  --bg-text-md-code: #414141;
+  --bg-block-md-quote: #464646;
+  --color-block-md-quote: #b9b9b9;
+  --color-divider-md-border: #ffffff4f;
+  --bg-content-search: rgba(71, 71, 71, 0.6);
+  --bg-block-md-pre: #464646;
+  --color-text-md-pre: #bebebe;
+  --bg-block-md-table: #3a3a3a;
+  --bg-block-md-table-2: #3f3f3f;
+  --color-border-md-table: #555555;
+  
+  /* highlight added for code block */
+  --hl-background: #2d2d2d;
+  --hl-foreground: #ccc;
+  --hl-gutter-bg: #1b1b1b;
+  --hl-gutter-color: #666;
+  --hl-comment: #999;
+  --hl-red: #f2777a;
+  --hl-orange: #f99157;
+  --hl-green: #9c9;
+  --hl-blue: #69c;
+  --hl-purple: #c9c;
+  --hl-cyan: #6cc;
+  --hl-marked-line: #515151;
+}
