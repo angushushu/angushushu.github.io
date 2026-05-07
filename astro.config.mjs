@@ -4,6 +4,7 @@ import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import { defineConfig, fontProviders } from 'astro/config';
 import remarkMath from 'remark-math';
+import remarkBreaks from 'remark-breaks';
 import rehypeKatex from 'rehype-katex';
 import { remarkObsidianMath } from './src/plugins/remark-obsidian-math.mjs';
 import { remarkObsidianImage } from './src/plugins/remark-obsidian-image.mjs';
@@ -19,7 +20,7 @@ export default defineConfig({
 		}),
 	],
 	markdown: {
-		remarkPlugins: [remarkMath, remarkObsidianMath, remarkObsidianImage],
+		remarkPlugins: [remarkMath, remarkObsidianMath, remarkBreaks, remarkObsidianImage],
 		rehypePlugins: [rehypeKatex, rehypeObsidianImage],
 	},
 	fonts: [

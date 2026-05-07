@@ -18,8 +18,7 @@ const sorted = Object.entries(tagCount).sort((a, b) => a[0].localeCompare(b[0]))
 			<ul class="tag-list" itemprop="keywords">
 				{sorted.map(([tag, count]) => (
 					<li class="tag-list-item">
-						<a class="tag-list-link" href={`/tags/${encodeURIComponent(tag)}/`} rel="tag">{tag}</a>
-						<span class="tag-list-count">{count}</span>
+						<a class="tag-list-link" href={`/tags/${encodeURIComponent(tag)}/`} rel="tag">{tag}</a><span class="tag-list-count">{count}</span>
 					</li>
 				))}
 			</ul>

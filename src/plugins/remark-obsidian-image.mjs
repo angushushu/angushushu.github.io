@@ -1,9 +1,8 @@
-// Handle Obsidian wikilinks and normalize image paths
-// Uses manual tree traversal because unist-util-visit is broken in Astro 6 remark
+// Handle Obsidian wikilinks, normalize image paths, clean up math breaks
 export function remarkObsidianImage() {
   return (tree) => {
-    // Walk ALL nodes to process wikilinks and image paths
     walk(tree);
+    cleanup(tree);
 
     function walk(node) {
       if (!node) return;
@@ -50,14 +49,12 @@ export function remarkObsidianImage() {
         node.children = newChildren;
       }
 
-      // Normalize image paths
       if (node.type === 'image' && node.url) {
         if (!node.url.startsWith('http') && !node.url.startsWith('/')) {
           node.url = '/images/' + node.url.replace(/^\.\/images\//, '').replace(/^images\//, '');
         }
       }
 
-      // Normalize raw HTML image paths
       if (node.type === 'html') {
         node.value = node.value.replace(
           /\bsrc=(["'])(?:\.\/)?images\/([^"']+)\1/g,
@@ -67,6 +64,33 @@ export function remarkObsidianImage() {
 
       if (node.children) {
         for (const child of node.children) walk(child);
+      }
+    }
+
+    // Remove break nodes between adjacent math nodes (remark-breaks artifact)
+    function cleanup(node) {
+      if (node.type === 'paragraph' && node.children) {
+        const cleaned = [];
+        for (let i = 0; i < node.children.length; i++) {
+          const c = node.children[i];
+          const isBreak = c.type === 'break' || (c.type === 'html' && c.value === '<br>');
+          if (isBreak) {
+            const prev = cleaned[cleaned.length - 1];
+            const next = node.children[i + 1];
+            // Remove break if adjacent to inlineMath or math
+            if ((prev && prev.type === 'inlineMath') || (next && next.type === 'inlineMath')) {
+              continue;
+            }
+            if ((prev && prev.type === 'math') || (next && next.type === 'math')) {
+              continue;
+            }
+          }
+          cleaned.push(c);
+        }
+        node.children = cleaned;
+      }
+      if (node.children) {
+        for (const child of node.children) cleanup(child);
       }
     }
   };

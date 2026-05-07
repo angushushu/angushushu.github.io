@@ -110,7 +110,6 @@ hr { border: none; border-top: 1px solid var(--border); margin: 2em 0; }
   justify-content: space-between;
   margin-left: calc(100vw - 100%);
   transition: all .3s ease;
-  margin-bottom: 70px;
 }
 .header { padding: 50px 0; }
 .container { width: 50%; margin: 0 auto; }
@@ -396,7 +395,12 @@ hr { border: none; border-top: 1px solid var(--border); margin: 2em 0; }
 .tag-list li .tag-list-link { position: relative; padding: 0 2px; border-radius: 2px; color: var(--theme-color); text-decoration: none; }
 .tag-list li .tag-list-link:hover { text-decoration: underline; }
 
-.tag-list-count { padding: 0 5px; color: #aaa; font-size: 1.2rem; vertical-align: top; }
+.tag-list-count {
+  padding: 0 0px;
+  color: #aaa;
+  font-size: 1.2rem;
+  vertical-align: top;
+}
 
 /* ---- valine ---- */
 .comments-container { color: var(--c); }
