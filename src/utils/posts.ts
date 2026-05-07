@@ -92,6 +92,8 @@ export function getPostDescription(post: BlogPost) {
 
 	const text = (post.body ?? '')
 		.replace(/```[\s\S]*?```/g, ' ')
+		.replace(/<img\b[^>]*>/gi, ' ')
+		.replace(/<[^>]+>/g, ' ')
 		.replace(/!\[[^\]]*\]\([^)]+\)/g, ' ')
 		.replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
 		.replace(/[`*_#>$|:[\](){},.]/g, ' ')

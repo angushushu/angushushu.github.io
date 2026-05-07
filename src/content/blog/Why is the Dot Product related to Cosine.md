@@ -10,8 +10,8 @@ Since graduating from my undergrad, much of my knowledge has faded. Recently, I'
 Given $\mathbf{v_1} = \begin{bmatrix} i_1 \\ j_1 \end{bmatrix}, \mathbf{v_2} = \begin{bmatrix} i_2 \\ j_2 \end{bmatrix}$   
 Shown below:
 
-|           V1           |           V2           |
-| :--------------------: | :--------------------: |
+|               V1                |               V2                |
+| :-----------------------------: | :-----------------------------: |
 | ![](./images/cross_prod_v1.jpg) | ![](./images/cross_prod_v2.jpg) |
 
 So that dot product is 

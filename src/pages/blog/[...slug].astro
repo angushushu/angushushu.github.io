@@ -115,6 +115,29 @@ const description = getPostDescription(post);
 			headings.forEach(h => observer.observe(h));
 		})();
 
+		// TOC scroll follow
+		(() => {
+			const toc = document.getElementById('toc');
+			if (!toc) return;
+			const origTop = toc.getBoundingClientRect().top + window.scrollY;
+			let fixed = false;
+			window.addEventListener('scroll', () => {
+				if (window.scrollY > origTop - 20) {
+					if (!fixed) {
+						toc.style.position = 'fixed';
+						toc.style.top = '20px';
+						fixed = true;
+					}
+				} else {
+					if (fixed) {
+						toc.style.position = 'absolute';
+						toc.style.top = '';
+						fixed = false;
+					}
+				}
+			});
+		})();
+
 		// Code copy
 		(() => {
 			document.querySelectorAll('pre').forEach(pre => {

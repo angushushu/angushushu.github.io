@@ -1,55 +1,73 @@
-import { visit } from 'unist-util-visit';
-
-/**
- * Convert Obsidian ![[path]] wikilinks to standard markdown image nodes
- * and normalize relative image paths to /images/ for the web.
- */
+// Handle Obsidian wikilinks and normalize image paths
+// Uses manual tree traversal because unist-util-visit is broken in Astro 6 remark
 export function remarkObsidianImage() {
   return (tree) => {
-    visit(tree, 'paragraph', (paragraph, index, parent) => {
-      if (!parent || index === undefined) return;
-      const newChildren = [];
+    // Walk ALL nodes to process wikilinks and image paths
+    walk(tree);
 
-      for (const child of paragraph.children) {
-        if (child.type !== 'text') {
-          newChildren.push(child);
-          continue;
-        }
+    function walk(node) {
+      if (!node) return;
 
-        const text = child.value;
-        const regex = /!\[\[([^\]]+)\]\]/g;
-        let lastIndex = 0;
-        let match;
+      if (node.type === 'paragraph' && node.children) {
+        const newChildren = [];
+        for (const child of node.children) {
+          if (child.type === 'text') {
+            const text = child.value;
+            const regex = /!?\[\[([^\]]+)\]\]/g;
+            let lastIdx = 0;
+            let match;
 
-        while ((match = regex.exec(text)) !== null) {
-          if (match.index > lastIndex) {
-            newChildren.push({ type: 'text', value: text.slice(lastIndex, match.index) });
+            while ((match = regex.exec(text)) !== null) {
+              if (match.index > lastIdx) {
+                newChildren.push({ type: 'text', value: text.slice(lastIdx, match.index) });
+              }
+              const wikiPath = match[1].trim();
+              const isEmbed = match[0].startsWith('!');
+              const parts = wikiPath.replace(/\\/g, '/').split('/');
+
+              if (isEmbed) {
+                const filename = parts[parts.length - 1];
+                newChildren.push({ type: 'image', url: filename, alt: '', title: null });
+              } else {
+                const name = parts[parts.length - 1].replace(/\.md$/i, '');
+                const slug = name.replace(/\s+/g, '-').toLowerCase();
+                newChildren.push({
+                  type: 'link',
+                  url: `/blog/${encodeURIComponent(slug)}/`,
+                  title: null,
+                  children: [{ type: 'text', value: name }]
+                });
+              }
+              lastIdx = match.index + match[0].length;
+            }
+            if (lastIdx < text.length) {
+              newChildren.push({ type: 'text', value: text.slice(lastIdx) });
+            }
+          } else {
+            newChildren.push(child);
           }
-          const wikiPath = match[1].trim();
-          const parts = wikiPath.replace(/\\/g, '/').split('/');
-          const filename = parts[parts.length - 1];
-          newChildren.push({
-            type: 'image',
-            url: filename,
-            alt: '',
-            title: null,
-          });
-          lastIndex = match.index + match[0].length;
         }
-        if (lastIndex < text.length) {
-          newChildren.push({ type: 'text', value: text.slice(lastIndex) });
+        node.children = newChildren;
+      }
+
+      // Normalize image paths
+      if (node.type === 'image' && node.url) {
+        if (!node.url.startsWith('http') && !node.url.startsWith('/')) {
+          node.url = '/images/' + node.url.replace(/^\.\/images\//, '').replace(/^images\//, '');
         }
       }
 
-      paragraph.children = newChildren;
-    });
-
-    // Normalize all image paths to /images/
-    visit(tree, 'image', (node) => {
-      if (node.url && !node.url.startsWith('http') && !node.url.startsWith('/')) {
-        const filename = node.url.replace(/^\.\/images\//, '').replace(/^images\//, '');
-        node.url = `/images/${filename}`;
+      // Normalize raw HTML image paths
+      if (node.type === 'html') {
+        node.value = node.value.replace(
+          /\bsrc=(["'])(?:\.\/)?images\/([^"']+)\1/g,
+          'src=$1/images/$2$1',
+        );
       }
-    });
+
+      if (node.children) {
+        for (const child of node.children) walk(child);
+      }
+    }
   };
 }

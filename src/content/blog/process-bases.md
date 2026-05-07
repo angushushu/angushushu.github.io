@@ -1,4 +1,4 @@
----
+﻿---
 title: Process - Bases
 date: 2023-02-09 19:59:01
 tags:
@@ -20,7 +20,7 @@ One interesting observation is that the features of graphs have provided us with
 
 The definition of needs and motivation is debatable and there are many theories about them. It's hard to define because it doesn't reflect any phenomenon directly but abstract features shared by phenomena. Therefore I'll define it with mechanisms established via our structure, and we will see whether the phenomena with "needs"/"motivation" involved match the consequences of the mechanisms.
 
-Here, let's define needs/motivation as a goal or a set of goals. Using the physiological need of Maslow's Hierarchy of needs as an example, it can contain multiple constructs such as the sufficiency of food or drink, the sufficiency of sexual behavior, avoidance of harm, and others. Whereas each construct can be represented as a set of states or representations (here representation and state are interchangeable since they will end up involved in connection 2 {% post_link structure-elements %}). Then, we can define either the set of states for each construct as a need or the union of the sets of states for multiple constructs as a need.
+Here, let's define needs/motivation as a goal or a set of goals. Using the physiological need of Maslow's Hierarchy of needs as an example, it can contain multiple constructs such as the sufficiency of food or drink, the sufficiency of sexual behavior, avoidance of harm, and others. Whereas each construct can be represented as a set of states or representations (here representation and state are interchangeable since they will end up involved in connection 2 [[structure-elements]]). Then, we can define either the set of states for each construct as a need or the union of the sets of states for multiple constructs as a need.
 
 ### 1.1 Behaviors Driven by Needs
 

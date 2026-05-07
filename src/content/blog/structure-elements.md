@@ -1,4 +1,4 @@
-﻿---
+---
 title: Structure - Elements
 date: 2023-02-09 19:59:01
 tags:
@@ -7,8 +7,8 @@ tags:
 ---
 
 <center>
-<img src="./images/struct_example.png" width="500">
-naive example of the structure
+<img src="images/struct_example.png" width="500">
+<br>naive example of the structure
 </center>
 Above is a naive example that shows the main component of the potential model: the connections between representations, and the connections between states (by actions). There will be a lot of features needed to be adjusted, just providing an insight into the model.
 
