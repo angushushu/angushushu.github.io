@@ -102,13 +102,14 @@ tr:nth-child(even) { background: var(--table-stripe); }
 hr { border: none; border-top: 1px solid var(--border); margin: 2em 0; }
 
 /* ---- layout ---- */
-#app { position: relative; z-index: 1; margin: 0 auto; }
+#app { position: relative; z-index: 1; margin: 0 auto; min-height: 100vh; display: flex; flex-direction: column; }
 
 .flex-container {
-  min-height: calc(100vh - 290px);
+  flex: 1;
   display: flex; flex-direction: column;
   justify-content: space-between;
   margin-left: calc(100vw - 100%);
+  margin-bottom: 35px;
   transition: all .3s ease;
 }
 .header { padding: 50px 0; }
@@ -371,7 +372,7 @@ hr { border: none; border-top: 1px solid var(--border); margin: 2em 0; }
 .search-close:hover { color: var(--c-strong); }
 
 /* ---- footer ---- */
-.footer { padding-top: 30px; font-size: 1.2rem; color: #aaa; }
+.footer { padding-top: 30px; padding-bottom: 15px; font-size: 1.2rem; color: #aaa; }
 
 .footer .social { padding-bottom: 5px; }
 .footer .social ul { text-align: center; }

@@ -13,12 +13,14 @@ const { title = 'Shu Hu', description = 'Personal website and blog', canonical }
 ---
 
 <!doctype html>
-<html lang="en" color-mode="light">
+<html lang="en">
 	<head>
-		<script>
+		<style is:inline>html{visibility:hidden}</style>
+		<script is:inline>
 			(function(){
 				var m = localStorage.getItem('color-mode');
 				if (m) document.documentElement.setAttribute('color-mode', m);
+				document.documentElement.style.visibility = 'visible';
 			})();
 		</script>
 		<BaseHead title={title} description={description} canonical={canonical} />
