@@ -1,0 +1,253 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+	title?: string;
+	description?: string;
+	canonical?: string;
+}
+
+const { title = 'Shu Hu', description = 'Personal website and blog', canonical } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" color-mode="light">
+	<head>
+		<script>
+			(function(){
+				var m = localStorage.getItem('color-mode');
+				if (m) document.documentElement.setAttribute('color-mode', m);
+			})();
+		</script>
+		<BaseHead title={title} description={description} canonical={canonical} />
+	</head>
+	<body>
+		<div id="particles-js" aria-hidden="true"></div>
+		<div id="app">
+			<Header />
+			<div class="flex-container">
+				<slot />
+				<Footer />
+			</div>
+			<div class="tools-bar" id="tools-bar">
+			<div class="back-to-top tools-bar-item hidden" id="back-to-top">
+				<a href="javascript:void(0)" title="Back to top">
+					<i class="iconfont icon-chevronup"></i>
+				</a>
+			</div>
+			<div class="search-icon tools-bar-item" id="search-icon">
+				<a href="javascript:void(0)" title="Search">
+					<i class="iconfont icon-search"></i>
+				</a>
+			</div>
+			<div class="tools-bar-item theme-icon" id="switch-color-scheme">
+				<a href="javascript:void(0)" title="Toggle theme">
+					<i id="theme-icon" class="iconfont icon-moon"></i>
+				</a>
+			</div>
+			<div class="share-icon tools-bar-item">
+				<a href="javascript:void(0)" id="share-icon" title="Share">
+					<i class="iconfont iconshare"></i>
+				</a>
+				<div class="share-content hidden" id="share-content">
+					<a class="share-item" href="" id="share-twitter" target="_blank" title="Twitter">
+						<i class="iconfont icon-twitter"></i>
+					</a>
+					<a class="share-item" href="" id="share-facebook" target="_blank" title="Facebook">
+						<i class="iconfont icon-facebooksquare"></i>
+					</a>
+				</div>
+			</div>
+		</div>
+		<div class="search-overlay hidden" id="search-overlay">
+			<div class="search-content" tabindex="0">
+				<div class="search-title">
+					<span class="search-icon-input">
+						<i class="iconfont icon-search"></i>
+					</span>
+					<input type="text" class="search-input" id="search-input" placeholder="Search..." />
+					<span class="search-close" id="search-close-icon">
+						<i class="iconfont icon-close"></i>
+					</span>
+				</div>
+				<div class="search-result" id="search-result"></div>
+			</div>
+		</div>
+		<script>
+			// Dark mode
+			(() => {
+				const html = document.documentElement;
+				const saved = localStorage.getItem('color-mode');
+				if (saved === 'dark') {
+					html.setAttribute('color-mode', 'dark');
+					document.getElementById('theme-icon').className = 'iconfont icon-sun';
+				}
+				document.getElementById('switch-color-scheme').onclick = () => {
+					const isDark = html.getAttribute('color-mode') === 'dark';
+					html.setAttribute('color-mode', isDark ? 'light' : 'dark');
+					localStorage.setItem('color-mode', isDark ? 'light' : 'dark');
+					document.getElementById('theme-icon').className = isDark ? 'iconfont icon-moon' : 'iconfont icon-sun';
+				};
+			})();
+
+			// Back to top
+			(() => {
+				const btn = document.getElementById('back-to-top');
+				btn.classList.add('hidden');
+				addEventListener('scroll', () => {
+					btn.classList.toggle('hidden', scrollY <= 500);
+				});
+				btn.onclick = () => window.scrollTo({top: 0, behavior: 'smooth'});
+			})();
+
+			// Search
+			(() => {
+				const overlay = document.getElementById('search-overlay');
+				const input = document.getElementById('search-input');
+				const result = document.getElementById('search-result');
+				let data = [];
+				document.getElementById('search-icon').onclick = () => {
+					overlay.classList.remove('hidden');
+					input.focus();
+					if (!data.length) fetch('/search.xml').then(r => r.text()).then(xml => {
+						const doc = new DOMParser().parseFromString(xml, 'text/xml');
+						doc.querySelectorAll('entry').forEach(e => data.push({
+							title: e.querySelector('title')?.textContent || '',
+							url: e.querySelector('url')?.textContent || '',
+							content: (e.querySelector('content')?.textContent || '').slice(0, 300)
+						}));
+					});
+				};
+				const close = () => { overlay.classList.add('hidden'); input.value = ''; result.innerHTML = ''; };
+				document.getElementById('search-close-icon').onclick = close;
+				document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
+				input.addEventListener('input', () => {
+					const q = input.value.trim().toLowerCase();
+					if (q.length < 2) { result.innerHTML = ''; return; }
+					const matches = data.filter(d => d.title.toLowerCase().includes(q) || d.content.toLowerCase().includes(q)).slice(0, 20);
+					result.innerHTML = matches.length
+						? `<ul class="search-result-list">${matches.map(r => {
+							const idx = r.content.toLowerCase().indexOf(q);
+							const ctx = idx > -1 ? r.content.slice(Math.max(0, idx - 30), idx + 100) : r.content.slice(0, 80);
+							return `<li onclick="location='${r.url}'"><div class="search-result-title">${r.title}</div><div class="search-result-abstract">${ctx}...</div></li>`;
+						}).join('')}</ul>`
+						: `<div class="local-search-empty">No results</div>`;
+				});
+			})();
+
+			// Share
+			(() => {
+				const icon = document.getElementById('share-icon');
+				const content = document.getElementById('share-content');
+				const tw = document.getElementById('share-twitter');
+				const fb = document.getElementById('share-facebook');
+				const url = encodeURIComponent(location.href);
+				const title = encodeURIComponent(document.title);
+				tw.href = `https://twitter.com/intent/tweet?text=${title}&url=${url}`;
+				fb.href = `https://www.facebook.com/sharer.php?u=${url}`;
+				icon.onclick = (e) => {
+					e.preventDefault();
+					content.classList.toggle('hidden');
+				};
+				document.addEventListener('click', (e) => {
+					if (!icon.contains(e.target) && !content.contains(e.target)) {
+						content.classList.add('hidden');
+					}
+				});
+			})();
+
+			// Particles
+			(() => {
+				const root = document.getElementById('particles-js');
+				if (!root || root.dataset.ready) return;
+				root.dataset.ready = 'true';
+
+				const C = '#ddd';
+				const N = 17;
+				const config = {
+					particles: {
+						number: { value: N, density: { enable: true, value_area: 800 } },
+						color: { value: C },
+						shape: {
+							type: 'circle',
+							stroke: { width: 0, color: '#000000' },
+							polygon: { nb_sides: 5 },
+							image: { src: 'img/github.svg', width: 100, height: 100 },
+						},
+						opacity: {
+							value: 0.5,
+							random: false,
+							anim: { enable: false, speed: 1, opacity_min: 0.1, sync: false },
+						},
+						size: {
+							value: 5,
+							random: true,
+							anim: { enable: false, speed: 40, size_min: 0.1, sync: false },
+						},
+						line_linked: { enable: true, distance: 150, color: C, opacity: 0.4, width: 1 },
+						move: {
+							enable: true,
+							speed: 1,
+							direction: 'bottom',
+							random: true,
+							straight: false,
+							out_mode: 'out',
+							attract: { enable: false, rotateX: 600, rotateY: 1200 },
+						},
+					},
+					interactivity: {
+						detect_on: 'window',
+						events: {
+							onhover: { enable: true, mode: ['grab', 'bubble'] },
+							onclick: { enable: true, mode: 'push' },
+							resize: true,
+						},
+						modes: {
+							grab: { distance: 100, line_linked: { opacity: 1 } },
+							bubble: { distance: 100, size: 5, duration: 2, opacity: 8, speed: 5 },
+							repulse: { distance: 200 },
+							push: { particles_nb: 4 },
+							remove: { particles_nb: 2 },
+						},
+					},
+					curvature: {
+						enable: true,
+						strength: 0.56,
+						radius: 280,
+						twist: 0.75,
+						draw_field: true,
+					},
+					retina_detect: true,
+					config_demo: {
+						hide_card: false,
+						background_color: '#b61924',
+						background_image: '',
+						background_position: '50% 50%',
+						background_repeat: 'no-repeat',
+						background_size: 'cover',
+					},
+				};
+
+				const init = () => window.particlesJS?.('particles-js', config);
+				if (window.particlesJS) {
+					init();
+					return;
+				}
+
+				const existing = document.querySelector('script[src*="particles.js"]');
+				if (existing) {
+					existing.addEventListener('load', init, { once: true });
+					return;
+				}
+
+				const script = document.createElement('script');
+				script.src = '/js/particles.js';
+				script.onload = init;
+				document.head.appendChild(script);
+			})();
+		</script>
+		</div>
+	</body>
+</html>

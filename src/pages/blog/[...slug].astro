@@ -1,0 +1,151 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/BaseLayout.astro';
+import {
+	formatDateTime,
+	getAbsoluteUrl,
+	getLegacyPostPath,
+	getPostDescription,
+	getPostPath,
+	getPostSlug,
+	getPostTags,
+	sortPostsNewest,
+} from '../../utils/posts';
+
+export async function getStaticPaths() {
+	const posts = await getCollection('blog');
+	return posts.map((post) => ({
+		params: { slug: getPostSlug(post) },
+		props: post,
+	}));
+}
+
+type Props = CollectionEntry<'blog'>;
+const post = Astro.props as Props;
+
+const allPosts = sortPostsNewest(await getCollection('blog'));
+const idx = allPosts.findIndex(p => p.id === post.id);
+const olderPost = idx < allPosts.length - 1 ? allPosts[idx + 1] : null;
+const newerPost = idx > 0 ? allPosts[idx - 1] : null;
+
+const { Content } = await import('astro:content').then(m => m.render(post));
+
+const sortedTags = [...getPostTags(post)].sort();
+const [dateStr, timeStr] = formatDateTime(post.data.date).split(' ');
+const oldPath = getLegacyPostPath(post);
+const canonical = getAbsoluteUrl(getPostPath(post));
+const description = getPostDescription(post);
+---
+<Layout title={`${post.data.title} - Shu Hu`} description={description} canonical={canonical}>
+	<div class="container post-details" id="post-details">
+		<div class="post-catalog" id="toc"></div>
+
+		<div class="post-title">{post.data.title}</div>
+		<div class="post-attach">
+			<span class="post-pubtime">
+				<i class="iconfont icon-updatetime mr-10" title="Update time"></i>{dateStr} {timeStr}
+			</span>
+			{sortedTags.length > 0 && (
+				<span class="post-tags">
+					<i class="iconfont icon-tags mr-10" title="tags"></i>
+					{sortedTags.map(tag => (
+						<span class="span--tag mr-8">
+							<a href={`/tags/${encodeURIComponent(tag)}/`} title={tag}>#{tag}</a>
+						</span>
+					))}
+				</span>
+			)}
+		</div>
+
+		<div class="markdown-body" id="post-content">
+			<Content />
+		</div>
+
+		<div class="prev-or-next">
+			<div class="post-foot-next">
+				{olderPost ? (
+					<a href={getPostPath(olderPost)}>
+						<i class="iconfont icon-chevronleft"></i>Prev
+					</a>
+				) : ''}
+			</div>
+			<div class="post-foot-prev">
+				{newerPost ? (
+					<a href={getPostPath(newerPost)}>
+						Next<i class="iconfont icon-chevronright"></i>
+					</a>
+				) : ''}
+			</div>
+		</div>
+
+		<div class="comments-container">
+			<div id="vcomments" data-path={oldPath}></div>
+		</div>
+	</div>
+
+	<script>
+		// Generate ToC
+		(() => {
+			const content = document.getElementById('post-content');
+			if (!content) return;
+			const headings = content.querySelectorAll('h1, h2, h3, h4');
+			if (headings.length < 2) return;
+			const toc = document.getElementById('toc');
+			const ul = document.createElement('ul');
+			ul.className = 'catalog-content';
+			headings.forEach(h => {
+				const id = (h.textContent || '').toLowerCase().replace(/[^a-z0-9\u4e00-\u9fff]+/g, '-').replace(/(^-|-$)/g, '');
+				h.id = id;
+				const li = document.createElement('li');
+				li.innerHTML = `<a class="toc-link" href="#${id}">${h.textContent}</a>`;
+				ul.appendChild(li);
+			});
+			toc.appendChild(ul);
+			const links = toc.querySelectorAll('.toc-link');
+			const observer = new IntersectionObserver(entries => {
+				entries.forEach(e => {
+					if (e.isIntersecting) {
+						links.forEach(l => l.classList.remove('active'));
+						const m = toc.querySelector(`a[href="#${e.target.id}"]`);
+						if (m) m.classList.add('active');
+					}
+				});
+			}, { rootMargin: '-80px 0px -80% 0px' });
+			headings.forEach(h => observer.observe(h));
+		})();
+
+		// Code copy
+		(() => {
+			document.querySelectorAll('pre').forEach(pre => {
+				const btn = document.createElement('button');
+				btn.className = 'pin-copy';
+				btn.textContent = 'Copy';
+				btn.onclick = () => {
+					const code = pre.querySelector('code')?.textContent || '';
+					navigator.clipboard.writeText(code).then(() => { btn.textContent = 'Copied!'; setTimeout(() => btn.textContent = 'Copy', 1500); });
+				};
+				pre.style.position = 'relative';
+				pre.appendChild(btn);
+			});
+		})();
+
+	</script>
+	<!-- Valine -->
+	<script is:inline>
+		function loadValineSuc() {
+			var el = document.getElementById('vcomments');
+			var p = el ? el.getAttribute('data-path') : window.location.pathname;
+			new Valine({
+				el: '#vcomments',
+				appId: 'W6AOGFAMyF4VAIziB8pX56Oe-gzGzoHsz',
+				appKey: 'QfZDVhjD2RHYdS4Kil8GMQWI',
+				placeholder: 'listening...',
+				avatar: 'retro',
+				lang: 'en',
+				path: p,
+			});
+		}
+	</script>
+	<script is:inline src="https://cdn.jsdelivr.net/npm/valine@1.4.18/dist/Valine.min.js" onload="loadValineSuc()"></script>
+</Layout>

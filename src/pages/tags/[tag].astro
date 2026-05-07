@@ -1,0 +1,37 @@
+---
+import Layout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import { formatDate, getPostPath, getPostTags, sortPostsNewest } from '../../utils/posts';
+
+export async function getStaticPaths() {
+	const posts = await getCollection('blog');
+	const tagSet = new Set<string>();
+	posts.forEach(p => {
+		getPostTags(p).forEach(tag => tagSet.add(tag));
+	});
+	return Array.from(tagSet).map(tag => ({ params: { tag: encodeURIComponent(tag) }, props: { tag } }));
+}
+
+const { tag } = Astro.props;
+const posts = sortPostsNewest((await getCollection('blog')).filter(p => getPostTags(p).includes(tag)));
+---
+<Layout title={`tags : ${tag} - Shu Hu`} description={`Posts tagged ${tag}`}>
+	<div class="container tag-details">
+		<div class="title-list">
+			<div class="content-title">
+				<h2><span>{tag}</span></h2>
+			</div>
+			<div class="post-list">
+				{posts.map(post => (
+					<div class="post-item" title={post.data.title}>
+						<span class="time-m-d">{formatDate(post.data.date)}</span>
+						<a href={getPostPath(post)}><span>{post.data.title}</span></a>
+					</div>
+				))}
+			</div>
+			<nav class="post-navigation">
+				<span class="page-num">1 / {posts.length}</span>
+			</nav>
+		</div>
+	</div>
+</Layout>

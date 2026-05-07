@@ -1,0 +1,23 @@
+---
+const currentPath = Astro.url.pathname;
+---
+
+<div class="header">
+	<div class="avatar" style="height: 2rem;"></div>
+	<div class="navbar">
+		<ul>
+			<li class="nav-item" class:list={[currentPath === '/' ? 'active' : '']}>
+				<a href="/">About</a>
+			</li>
+			<li class="nav-item" class:list={[currentPath.startsWith('/writings') ? 'active' : '']}>
+				<a href="/writings/">Writings</a>
+			</li>
+			<li class="nav-item" class:list={[currentPath.startsWith('/blog') || currentPath.startsWith('/archives') ? 'active' : '']}>
+				<a href="/archives/">Blog</a>
+			</li>
+			<li class="nav-item" class:list={[currentPath.startsWith('/tags') ? 'active' : '']}>
+				<a href="/tags/">Tags</a>
+			</li>
+		</ul>
+	</div>
+</div>

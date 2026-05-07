@@ -1,0 +1,38 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { getCollection } from 'astro:content';
+import { getAbsoluteUrl, getLegacyPostPath, getPostPath } from '../../../../utils/posts';
+
+export async function getStaticPaths() {
+	const posts = await getCollection('blog');
+
+	return posts.map((post) => {
+		const [year, month, day, ...slugParts] = getLegacyPostPath(post).split('/').filter(Boolean);
+		return {
+			params: { year, month, day, slug: slugParts.join('/') },
+			props: post,
+		};
+	});
+}
+
+type Props = CollectionEntry<'blog'>;
+const post = Astro.props as Props;
+const targetPath = getPostPath(post);
+const targetUrl = getAbsoluteUrl(targetPath);
+---
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="robots" content="noindex, follow" />
+		<meta http-equiv="refresh" content={`0; url=${targetPath}`} />
+		<link rel="canonical" href={targetUrl} />
+		<title>Redirecting...</title>
+	</head>
+	<body>
+		<a href={targetPath}>Redirecting...</a>
+		<script is:inline define:vars={{ targetPath }}>
+			location.replace(targetPath);
+		</script>
+	</body>
+</html>

@@ -1,0 +1,51 @@
+---
+import '../styles/global.css';
+import 'katex/dist/katex.min.css';
+
+interface Props {
+	title?: string;
+	description?: string;
+	image?: string;
+	canonical?: string;
+}
+
+const {
+	title = 'Shu Hu',
+	description = 'Personal website and blog',
+	image = '/images/head.png',
+	canonical,
+} = Astro.props;
+const canonicalUrl = canonical ?? Astro.url.href;
+const imageUrl = new URL(image, canonicalUrl).href;
+---
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<link rel="icon" type="image/x-icon" href="/images/favicon32.ico" />
+<meta name="description" content={description} />
+<meta name="author" content="Shu Hu" />
+<link rel="canonical" href={canonicalUrl} />
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1886449_67xjft27j1l.css" />
+
+<title>{title}</title>
+
+<!-- Open Graph -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonicalUrl} />
+<meta property="og:image" content={imageUrl} />
+<meta property="og:site_name" content="Shu Hu" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={imageUrl} />
+
+<!-- Google tag -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RS6SN86BXM"></script>
+<script is:inline>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-RS6SN86BXM');
+</script>

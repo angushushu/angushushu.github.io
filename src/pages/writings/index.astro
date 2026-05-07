@@ -1,0 +1,19 @@
+---
+import { getEntry, render } from 'astro:content';
+import Layout from '../../layouts/BaseLayout.astro';
+
+const page = await getEntry('pages', 'writings');
+if (!page) {
+	throw new Error('Missing content page: src/content/pages/writings.md');
+}
+
+const { Content } = await render(page);
+const { title, description = 'Publications and writings' } = page.data;
+---
+<Layout title={title} description={description}>
+	<div class="container about-index">
+		<div class="markdown-body">
+			<Content />
+		</div>
+	</div>
+</Layout>

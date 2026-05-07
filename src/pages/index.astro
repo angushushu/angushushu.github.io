@@ -1,0 +1,46 @@
+---
+import { getEntry, render } from 'astro:content';
+import Layout from '../layouts/BaseLayout.astro';
+
+const page = await getEntry('pages', 'index');
+if (!page) {
+	throw new Error('Missing content page: src/content/pages/index.md');
+}
+
+const { Content } = await render(page);
+const { title, description = 'Shu Hu - Personal Website', profile } = page.data;
+---
+<Layout title={title} description={description}>
+	<div class="container about-index about-page">
+		<div class="markdown-body">
+			{profile && (
+				<div class="about-card">
+					<div class="head-box">
+						<img src={profile.avatar} alt={profile.avatarAlt ?? profile.name} />
+					</div>
+					<div class="info-box">
+						<b>name: {profile.name} </b><br />
+						{profile.emails.map((email, index) => (
+							<>
+								<b>{index === 0 ? `email:${email}` : email}</b><br />
+							</>
+						))}
+						{profile.links.map(link => (
+							<>
+								<a
+									href={link.href}
+									target={link.external ? '_blank' : undefined}
+									rel={link.external ? 'noopener' : undefined}
+									class="link"
+								>
+									<b>{link.label}</b>
+								</a>{' '}
+							</>
+						))}
+					</div>
+				</div>
+			)}
+			<Content />
+		</div>
+	</div>
+</Layout>

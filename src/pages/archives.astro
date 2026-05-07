@@ -1,0 +1,38 @@
+---
+import Layout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import { formatMonthDay, getPostPath, getPostYear, sortPostsNewest } from '../utils/posts';
+
+const posts = sortPostsNewest(await getCollection('blog'));
+
+const byYear: Record<number, typeof posts> = {};
+posts.forEach(p => {
+	const y = getPostYear(p);
+	if (!byYear[y]) byYear[y] = [];
+	byYear[y].push(p);
+});
+const years = Object.keys(byYear).sort((a, b) => Number(b) - Number(a)).map(Number);
+---
+<Layout title="Blog - Shu Hu" description="Blog posts">
+	<div class="container archives">
+		<div class="post-list">
+			{years.map(year => (
+				<>
+					<div class="content-title">
+						<h2><span>{year}</span></h2>
+					</div>
+					{byYear[year].map(post => (
+						<div class="post-item" title={post.data.title}>
+							<div class="time-m-d">
+								{formatMonthDay(post.data.date)}
+							</div>
+							<div class="title">
+								<a href={getPostPath(post)}><span>{post.data.title}</span></a>
+							</div>
+						</div>
+					))}
+				</>
+			))}
+		</div>
+	</div>
+</Layout>
