@@ -4,16 +4,18 @@ import { z } from 'astro/zod';
 
 const blog = defineCollection({
 	loader: glob({ base: './src/content/blog', pattern: '**/*.{md,mdx}' }),
-	schema: ({ image }) =>
-		z.object({
-			title: z.string(),
-			date: z.coerce.date(),
-			slug: z.string().optional(),
-			tags: z.union([z.string(), z.array(z.string()), z.null()]).optional().transform(v => v ?? []),
-			description: z.string().optional(),
-			updatedDate: z.coerce.date().optional(),
-			heroImage: z.optional(image()),
-		}),
+		schema: ({ image }) =>
+			z.object({
+				title: z.string(),
+				date: z.coerce.date(),
+				slug: z.string().optional(),
+				tags: z.union([z.string(), z.array(z.string()), z.null()]).optional().transform(v => v ?? []),
+				description: z.string().optional(),
+				updatedDate: z.coerce.date().optional(),
+				heroImage: z.optional(image()),
+				password: z.string().optional(),
+				password_hint: z.string().optional(),
+			}),
 });
 
 const pages = defineCollection({

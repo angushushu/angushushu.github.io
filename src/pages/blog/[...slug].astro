@@ -2,6 +2,7 @@
 import type { CollectionEntry } from 'astro:content';
 import { getCollection } from 'astro:content';
 import Layout from '../../layouts/BaseLayout.astro';
+import { createHash, pbkdf2Sync } from 'node:crypto';
 import {
 	formatDateTime,
 	getAbsoluteUrl,
@@ -36,6 +37,12 @@ const [dateStr, timeStr] = formatDateTime(post.data.date).split(' ');
 const oldPath = getLegacyPostPath(post);
 const canonical = getAbsoluteUrl(getPostPath(post));
 const description = getPostDescription(post);
+
+const isProtected = !!post.data.password;
+const passwordHint = post.data.password_hint || '';
+const passwordHash = isProtected
+	? pbkdf2Sync(post.data.password, getPostSlug(post), 100000, 32, 'sha256').toString('hex')
+	: '';
 ---
 <Layout title={`${post.data.title} - Shu Hu`} description={description} canonical={canonical}>
 	<div class="container post-details" id="post-details">
@@ -59,7 +66,22 @@ const description = getPostDescription(post);
 		</div>
 
 		<div class="markdown-body" id="post-content">
-			<Content />
+			{isProtected ? (
+				<div id="protected-content" style="display:none">
+					<Content />
+				</div>
+			) : (
+				<Content />
+			)}
+			{isProtected && (
+				<div id="password-prompt" class="password-prompt" data-hash={passwordHash} data-salt={getPostSlug(post)}>
+					<p>This post is password protected.</p>
+					{passwordHint && <p class="password-hint">Hint: {passwordHint}</p>}
+					<input type="password" id="password-input" placeholder="Enter password..." />
+					<button id="password-submit">Unlock</button>
+					<p id="password-error" style="color:#c00;display:none;margin-top:.5em">Incorrect password</p>
+				</div>
+			)}
 		</div>
 
 		<div class="prev-or-next">
@@ -154,6 +176,45 @@ const description = getPostDescription(post);
 		})();
 
 	</script>
+	{isProtected && (
+		<script is:inline>
+			(function() {
+				var hash = document.getElementById('password-prompt').getAttribute('data-hash');
+				var salt = document.getElementById('password-prompt').getAttribute('data-salt');
+				document.getElementById('password-submit').onclick = verify;
+				document.getElementById('password-input').onkeydown = function(e) {
+					if (e.key === 'Enter') verify();
+				};
+				async function verify() {
+					var input = document.getElementById('password-input').value;
+					var enc = new TextEncoder();
+					var key = await crypto.subtle.importKey('raw', enc.encode(input), 'PBKDF2', false, ['deriveBits']);
+					var buf = await crypto.subtle.deriveBits(
+						{ name: 'PBKDF2', salt: enc.encode(salt), iterations: 100000, hash: 'SHA-256' },
+						key, 256
+					);
+					var inputHash = Array.from(new Uint8Array(buf)).map(function(b) { return b.toString(16).padStart(2,'0'); }).join('');
+					if (inputHash === hash) {
+						document.getElementById('password-prompt').style.display = 'none';
+						document.getElementById('protected-content').style.display = '';
+						document.querySelectorAll('#protected-content p').forEach(function(p) {
+							var children = Array.from(p.childNodes);
+							var nonWs = children.filter(function(c) { return !(c.nodeType === 3 && /^\\s*$/.test(c.textContent)); });
+							if (nonWs.length !== 1) return;
+							var el = nonWs[0];
+							if (el.nodeType !== 1 || el.tagName !== 'SPAN' || !el.classList.contains('katex')) return;
+							var wrapper = document.createElement('div');
+							wrapper.className = 'katex-display';
+							wrapper.appendChild(el);
+							p.parentNode.replaceChild(wrapper, p);
+						});
+					} else {
+						document.getElementById('password-error').style.display = '';
+					}
+				}
+			})();
+		</script>
+	)}
 	<!-- Valine -->
 	<script is:inline>
 		function loadValineSuc() {

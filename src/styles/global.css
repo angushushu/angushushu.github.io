@@ -403,7 +403,41 @@ hr { border: none; border-top: 1px solid var(--border); margin: 2em 0; }
   vertical-align: top;
 }
 
-/* ---- valine ---- */
+/* ---- password ---- */
+.password-prompt {
+  text-align: center;
+  padding: 2em 1em;
+}
+
+.password-prompt .password-hint {
+  color: var(--c-light);
+  font-style: italic;
+  margin-bottom: .8em;
+}
+
+.password-prompt input {
+  margin: .5em 0;
+  font-size: 1rem;
+  padding: .4em .6em;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: var(--bg);
+  color: var(--c);
+}
+
+.password-prompt button {
+  font-size: 1rem;
+  padding: .4em 1em;
+  border: none;
+  border-radius: 4px;
+  background: var(--theme-color);
+  color: #fff;
+  cursor: pointer;
+}
+
+.password-prompt button:hover {
+  opacity: .85;
+}
 .comments-container { color: var(--c); }
 #vcomments { margin-top: 3em; }
 .v .vempty { display: none !important; }
