@@ -5,6 +5,7 @@ description: Publications and writings
 
 ### Publication:
 
+[Directional asymmetry in event schema activation](/files/Directional_Asymmetry_in_Event_Schema_Activation.pdf)  
 [Quantitative Studies on Color and Film Genres](https://www.berghahnjournals.com/view/journals/projections/aop/proj.2025.1211OF2/proj.2025.1211OF2.xml)  
 [Think-aloud verbal protocols and natural language processing to capture coherence building across narrative media](https://www.researchgate.net/publication/397313894_Think-aloud_verbal_protocols_and_natural_language_processing_to_capture_coherence_building_across_narrative_media)  
 [Narrative Experience Taxonomy: expanding think-aloud analysis for narrative experiences](https://www.researchgate.net/publication/395634678_Narrative_Experience_Taxonomy_expanding_think-aloud_analysis_for_narrative_experiences)  
