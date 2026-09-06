@@ -219,7 +219,8 @@ const { title = 'Shu Hu', description = 'Personal website and blog', canonical }
 						strength: 0.56,
 						radius: 280,
 						twist: 0.75,
-						draw_field: true,
+						// 关闭鼠标处的场可视化（同心圆+辐条），只保留粒子和连线本身的双曲形变
+						draw_field: false,
 					},
 					retina_detect: true,
 					config_demo: {

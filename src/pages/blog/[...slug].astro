@@ -2,11 +2,11 @@
 import type { CollectionEntry } from 'astro:content';
 import { getCollection } from 'astro:content';
 import Layout from '../../layouts/BaseLayout.astro';
+import Giscus from '../../components/Giscus.astro';
 import { createHash, pbkdf2Sync } from 'node:crypto';
 import {
 	formatDateTime,
 	getAbsoluteUrl,
-	getLegacyPostPath,
 	getPostDescription,
 	getPostPath,
 	getPostSlug,
@@ -34,7 +34,6 @@ const { Content } = await import('astro:content').then(m => m.render(post));
 
 const sortedTags = [...getPostTags(post)].sort();
 const [dateStr, timeStr] = formatDateTime(post.data.date).split(' ');
-const oldPath = getLegacyPostPath(post);
 const canonical = getAbsoluteUrl(getPostPath(post));
 const description = getPostDescription(post);
 
@@ -102,7 +101,7 @@ const passwordHash = isProtected
 		</div>
 
 		<div class="comments-container">
-			<div id="vcomments" data-path={oldPath}></div>
+			<Giscus />
 		</div>
 	</div>
 
@@ -215,21 +214,4 @@ const passwordHash = isProtected
 			})();
 		</script>
 	)}
-	<!-- Valine -->
-	<script is:inline>
-		function loadValineSuc() {
-			var el = document.getElementById('vcomments');
-			var p = el ? el.getAttribute('data-path') : window.location.pathname;
-			new Valine({
-				el: '#vcomments',
-				appId: 'W6AOGFAMyF4VAIziB8pX56Oe-gzGzoHsz',
-				appKey: 'QfZDVhjD2RHYdS4Kil8GMQWI',
-				placeholder: 'listening...',
-				avatar: 'retro',
-				lang: 'en',
-				path: p,
-			});
-		}
-	</script>
-	<script is:inline src="https://cdn.jsdelivr.net/npm/valine@1.4.18/dist/Valine.min.js" onload="loadValineSuc()"></script>
 </Layout>

@@ -439,63 +439,7 @@ hr { border: none; border-top: 1px solid var(--border); margin: 2em 0; }
   opacity: .85;
 }
 .comments-container { color: var(--c); }
-#vcomments { margin-top: 3em; }
-.v .vempty { display: none !important; }
-.comments-container .vwrap {
-  color: var(--c);
-  padding: 2px 10px !important;
-}
-.v[data-class="v"] .vwrap .vheader .vinput {
-  padding: 0;
-  padding-bottom: 2px;
-}
-.v[data-class="v"] .vwrap .vheader .vinput:focus {
-  border-bottom-color: var(--theme-color) !important;
-}
-.v[data-class="v"] .vwrap .vedit {
-  padding-top: 5px !important;
-}
-.v[data-class="v"] .veditor {
-  padding: 2px 0 !important;
-  min-height: 5rem !important;
-}
-.v[data-class="v"] .vrow {
-  padding: 0 !important;
-}
-.vheader input::-webkit-input-placeholder,
-.vheader input,
-.vedit textarea::-webkit-input-placeholder,
-.vedit textarea {
-  color: var(--c) !important;
-}
-.vicon.vemoji-btn svg,
-.vicon.vpreview-btn svg {
-  width: 80% !important;
-}
-.v[data-class="v"] .vwrap .vpreview {
-  padding: 0 !important;
-}
-.vsubmit.vbtn {
-  padding: .5em .7em !important;
-}
-.vicon {
-  fill: var(--c) !important;
-}
-.vbtn {
-  color: var(--c) !important;
-  margin-bottom: 10px !important;
-}
-.v[data-class="v"] .vbtn:active,
-.v[data-class="v"] .vbtn:hover {
-  border-color: var(--theme-color) !important;
-}
-.vcontent p {
-  color: var(--c) !important;
-}
-.v[data-class="v"] .vcards .vcard .vh .vmeta .vat,
-.v[data-class="v"] a {
-  color: var(--theme-color) !important;
-}
+.comments-container .giscus { margin-top: 3em; }
 
 /* ---- inline tag spans ---- */
 .span--tag { }

@@ -1,0 +1,54 @@
+---
+// giscus 评论组件：评论数据存在 GitHub Discussions（angushushu/angushushu.github.io，Comments 分类）。
+// 配置生成于 https://giscus.app ；主题跟随站内的明暗色切换，而非操作系统设置。
+const giscusConfig = {
+	repo: 'angushushu/angushushu.github.io',
+	'repo-id': 'R_kgDOGNNWRA',
+	category: 'Comments',
+	'category-id': 'DIC_kwDOGNNWRM4DE9RK',
+	mapping: 'pathname',
+	strict: '0',
+	'reactions-enabled': '1',
+	'emit-metadata': '0',
+	'input-position': 'top',
+	lang: 'en',
+	loading: 'lazy',
+};
+---
+
+<div class="giscus" id="giscus-container"></div>
+
+<script is:inline define:vars={{ giscusConfig }}>
+	(() => {
+		var GISCUS_ORIGIN = 'https://giscus.app';
+		var THEMES = { light: 'light', dark: 'transparent_dark' };
+		function currentTheme() {
+			return THEMES[localStorage.getItem('color-mode') === 'dark' ? 'dark' : 'light'];
+		}
+		var container = document.getElementById('giscus-container');
+		if (!container) return;
+
+		var script = document.createElement('script');
+		script.src = GISCUS_ORIGIN + '/client.js';
+		script.async = true;
+		script.crossOrigin = 'anonymous';
+		var attrs = Object.assign({}, giscusConfig, { theme: currentTheme() });
+		Object.keys(attrs).forEach(function (key) {
+			script.setAttribute('data-' + key, attrs[key]);
+		});
+		container.appendChild(script);
+
+		// 站内明暗色切换时同步 giscus 主题。本脚本在 <slot> 内解析时切换按钮（tools-bar 在 slot 之后）尚不存在，
+		// 因此用 document 级事件委托，而不是直接在按钮上挂监听。
+		document.addEventListener('click', function (e) {
+			var target = e.target;
+			if (!(target && target.closest && target.closest('#switch-color-scheme'))) return;
+			var iframe = document.querySelector('iframe.giscus-frame');
+			if (!iframe) return;
+			iframe.contentWindow.postMessage(
+				{ giscus: { setConfig: { theme: currentTheme() } } },
+				GISCUS_ORIGIN
+			);
+		});
+	})();
+</script>
