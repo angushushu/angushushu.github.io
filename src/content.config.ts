@@ -13,7 +13,9 @@ const blog = defineCollection({
 				description: z.string().optional(),
 				updatedDate: z.coerce.date().optional(),
 				heroImage: z.optional(image()),
-				password: z.string().optional(),
+				// password_id 标识使用哪个密码：实际密码不进仓库，构建时从环境变量
+				// SITE_PW_<ID大写> 读取，由 scripts/encrypt-protected.mjs 对正文做 AES-256-GCM 加密
+				password_id: z.string().optional(),
 				password_hint: z.string().optional(),
 			}),
 });

@@ -4,11 +4,13 @@ import {
 	getAbsoluteUrl,
 	getPostPath,
 	getPostTags,
+	isProtectedPost,
 	sortPostsNewest,
 } from '../utils/posts';
 
 export async function GET() {
-	const posts = sortPostsNewest(await getCollection('blog'));
+	// 受保护文章不进 sitemap，避免搜索引擎收录锁定页
+	const posts = sortPostsNewest(await getCollection('blog')).filter((post) => !isProtectedPost(post));
 	const latestPostDate = posts[0]?.data.updatedDate ?? posts[0]?.data.date ?? new Date();
 	const tags = Array.from(new Set(posts.flatMap(getPostTags))).sort((a, b) => a.localeCompare(b));
 

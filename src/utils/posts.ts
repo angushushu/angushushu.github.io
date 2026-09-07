@@ -87,7 +87,14 @@ export function getPostTags(post: BlogPost) {
 	return [];
 }
 
+export function isProtectedPost(post: BlogPost) {
+	return !!post.data.password_id;
+}
+
 export function getPostDescription(post: BlogPost) {
+	// 受保护文章的正文是机密的，meta description 不能从正文提取
+	if (isProtectedPost(post)) return 'This post is password protected.';
+
 	if (post.data.description) return post.data.description;
 
 	const text = (post.body ?? '')

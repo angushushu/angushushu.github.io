@@ -13,7 +13,7 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 import { rehypeObsidianImage } from '../plugins/rehype-obsidian-image.mjs';
 import { remarkObsidianImage } from '../plugins/remark-obsidian-image.mjs';
 import { remarkObsidianMath } from '../plugins/remark-obsidian-math.mjs';
-import { getPostDescription, getPostPath, getPostTags, sortPostsNewest } from '../utils/posts';
+import { getPostDescription, getPostPath, getPostTags, isProtectedPost, sortPostsNewest } from '../utils/posts';
 
 function isAbsoluteLikeUrl(value) {
 	return /^[a-z][a-z\d+.-]*:/i.test(value) || value.startsWith('#');
@@ -51,7 +51,8 @@ async function renderPostContentForRss(post, site) {
 }
 
 export async function GET(context) {
-	const posts = sortPostsNewest(await getCollection('blog'));
+	// 受保护文章的正文对订阅者是不可见的，直接不进 RSS
+	const posts = sortPostsNewest(await getCollection('blog')).filter((post) => !isProtectedPost(post));
 	return rss({
 		title: SITE_TITLE,
 		description: SITE_DESCRIPTION,

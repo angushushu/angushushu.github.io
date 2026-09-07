@@ -1,8 +1,9 @@
 import { getCollection } from 'astro:content';
-import { getAbsoluteUrl, getPostPath, sortPostsNewest } from '../utils/posts';
+import { getAbsoluteUrl, getPostPath, isProtectedPost, sortPostsNewest } from '../utils/posts';
 
 export async function GET() {
-	const posts = sortPostsNewest(await getCollection('blog'));
+	// 受保护文章的正文是密文原料，不能进搜索索引
+	const posts = sortPostsNewest(await getCollection('blog')).filter((post) => !isProtectedPost(post));
 
 	const entries = posts.map((post) => {
 		const body = post.body || '';

@@ -26,3 +26,4 @@ dev-server*.log
 
 # editor settings
 .vscode/
+.env.local

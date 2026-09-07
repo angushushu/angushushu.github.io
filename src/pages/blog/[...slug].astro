@@ -3,7 +3,6 @@ import type { CollectionEntry } from 'astro:content';
 import { getCollection } from 'astro:content';
 import Layout from '../../layouts/BaseLayout.astro';
 import Giscus from '../../components/Giscus.astro';
-import { createHash, pbkdf2Sync } from 'node:crypto';
 import {
 	formatDateTime,
 	getAbsoluteUrl,
@@ -37,11 +36,8 @@ const [dateStr, timeStr] = formatDateTime(post.data.date).split(' ');
 const canonical = getAbsoluteUrl(getPostPath(post));
 const description = getPostDescription(post);
 
-const isProtected = !!post.data.password;
+const isProtected = !!post.data.password_id;
 const passwordHint = post.data.password_hint || '';
-const passwordHash = isProtected
-	? pbkdf2Sync(post.data.password, getPostSlug(post), 100000, 32, 'sha256').toString('hex')
-	: '';
 ---
 <Layout title={`${post.data.title} - Shu Hu`} description={description} canonical={canonical}>
 	<div class="container post-details" id="post-details">
@@ -73,7 +69,7 @@ const passwordHash = isProtected
 				<Content />
 			)}
 			{isProtected && (
-				<div id="password-prompt" class="password-prompt" data-hash={passwordHash} data-salt={getPostSlug(post)}>
+				<div id="password-prompt" class="password-prompt" data-pw-id={post.data.password_id}>
 					<p>This post is password protected.</p>
 					{passwordHint && <p class="password-hint">Hint: {passwordHint}</p>}
 					<input type="password" id="password-input" placeholder="Enter password..." />
@@ -177,40 +173,79 @@ const passwordHash = isProtected
 	</script>
 	{isProtected && (
 		<script is:inline>
-			(function() {
-				var hash = document.getElementById('password-prompt').getAttribute('data-hash');
-				var salt = document.getElementById('password-prompt').getAttribute('data-salt');
-				document.getElementById('password-submit').onclick = verify;
-				document.getElementById('password-input').onkeydown = function(e) {
+			// 构建时 scripts/encrypt-protected.mjs 把正文替换成了 AES-256-GCM 密文
+			// （data-payload = v1.<salt>.<iv>.<ciphertext+tag>，均为 base64），
+			// 这里用输入的密码派生密钥解密；密码错误时 GCM 校验失败，解密本身即为验证。
+			(function () {
+				var promptEl = document.getElementById('password-prompt');
+				var contentEl = document.getElementById('protected-content');
+				var inputEl = document.getElementById('password-input');
+				var errorEl = document.getElementById('password-error');
+				var submitEl = document.getElementById('password-submit');
+
+				function b64ToBytes(b64) {
+					var bin = atob(b64);
+					var bytes = new Uint8Array(bin.length);
+					for (var i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+					return bytes;
+				}
+
+				async function unlock(password) {
+					var parts = (promptEl.getAttribute('data-payload') || '').split('.');
+					if (parts.length !== 4 || parts[0] !== 'v1') throw new Error('bad payload');
+					var iterations = parseInt(promptEl.getAttribute('data-iter'), 10) || 600000;
+					var baseKey = await crypto.subtle.importKey(
+						'raw',
+						new TextEncoder().encode(password),
+						'PBKDF2',
+						false,
+						['deriveKey']
+					);
+					var key = await crypto.subtle.deriveKey(
+						{ name: 'PBKDF2', salt: b64ToBytes(parts[1]), iterations: iterations, hash: 'SHA-256' },
+						baseKey,
+						{ name: 'AES-GCM', length: 256 },
+						false,
+						['decrypt']
+					);
+					var plain = await crypto.subtle.decrypt(
+						{ name: 'AES-GCM', iv: b64ToBytes(parts[2]) },
+						key,
+						b64ToBytes(parts[3])
+					);
+					contentEl.innerHTML = new TextDecoder().decode(plain);
+					contentEl.style.display = '';
+					promptEl.style.display = 'none';
+					fixDisplayMath();
+				}
+
+				// 与旧版保持一致：解锁后把只含一个 katex 公式的段落包成 katex-display 以正确居中
+				function fixDisplayMath() {
+					contentEl.querySelectorAll('p').forEach(function (p) {
+						var children = Array.from(p.childNodes);
+						var nonWs = children.filter(function (c) { return !(c.nodeType === 3 && /^\s*$/.test(c.textContent)); });
+						if (nonWs.length !== 1) return;
+						var el = nonWs[0];
+						if (el.nodeType !== 1 || el.tagName !== 'SPAN' || !el.classList.contains('katex')) return;
+						var wrapper = document.createElement('div');
+						wrapper.className = 'katex-display';
+						wrapper.appendChild(el);
+						p.parentNode.replaceChild(wrapper, p);
+					});
+				}
+
+				function verify() {
+					var password = inputEl.value;
+					if (!password) return;
+					unlock(password).catch(function () {
+						errorEl.style.display = '';
+					});
+				}
+
+				submitEl.onclick = verify;
+				inputEl.onkeydown = function (e) {
 					if (e.key === 'Enter') verify();
 				};
-				async function verify() {
-					var input = document.getElementById('password-input').value;
-					var enc = new TextEncoder();
-					var key = await crypto.subtle.importKey('raw', enc.encode(input), 'PBKDF2', false, ['deriveBits']);
-					var buf = await crypto.subtle.deriveBits(
-						{ name: 'PBKDF2', salt: enc.encode(salt), iterations: 100000, hash: 'SHA-256' },
-						key, 256
-					);
-					var inputHash = Array.from(new Uint8Array(buf)).map(function(b) { return b.toString(16).padStart(2,'0'); }).join('');
-					if (inputHash === hash) {
-						document.getElementById('password-prompt').style.display = 'none';
-						document.getElementById('protected-content').style.display = '';
-						document.querySelectorAll('#protected-content p').forEach(function(p) {
-							var children = Array.from(p.childNodes);
-							var nonWs = children.filter(function(c) { return !(c.nodeType === 3 && /^\\s*$/.test(c.textContent)); });
-							if (nonWs.length !== 1) return;
-							var el = nonWs[0];
-							if (el.nodeType !== 1 || el.tagName !== 'SPAN' || !el.classList.contains('katex')) return;
-							var wrapper = document.createElement('div');
-							wrapper.className = 'katex-display';
-							wrapper.appendChild(el);
-							p.parentNode.replaceChild(wrapper, p);
-						});
-					} else {
-						document.getElementById('password-error').style.display = '';
-					}
-				}
 			})();
 		</script>
 	)}

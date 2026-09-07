@@ -1,8 +1,8 @@
 import { getCollection } from 'astro:content';
-import { getAbsoluteUrl, getPostPath, getPostTags, sortPostsNewest } from '../utils/posts';
+import { getAbsoluteUrl, getPostPath, getPostTags, isProtectedPost, sortPostsNewest } from '../utils/posts';
 
 export async function GET() {
-	const posts = sortPostsNewest(await getCollection('blog'));
+	const posts = sortPostsNewest(await getCollection('blog')).filter((post) => !isProtectedPost(post));
 	const tags = Array.from(new Set(posts.flatMap(getPostTags))).sort((a, b) => a.localeCompare(b));
 	const paths = [
 		'/',
