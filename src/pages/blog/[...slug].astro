@@ -70,11 +70,23 @@ const passwordHint = post.data.password_hint || '';
 			)}
 			{isProtected && (
 				<div id="password-prompt" class="password-prompt" data-pw-id={post.data.password_id}>
-					<p>This post is password protected.</p>
-					{passwordHint && <p class="password-hint">Hint: {passwordHint}</p>}
-					<input type="password" id="password-input" placeholder="Enter password..." />
-					<button id="password-submit">Unlock</button>
-					<p id="password-error" style="color:#c00;display:none;margin-top:.5em">Incorrect password</p>
+					<svg class="password-lock" viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+						<rect x="4.5" y="10.5" width="15" height="10" rx="1.5"></rect>
+						<path d="M8 10.5V7a4 4 0 0 1 8 0v3.5"></path>
+						<circle cx="12" cy="15" r="1.2" fill="currentColor" stroke="none"></circle>
+					</svg>
+					<p class="password-title">Password required</p>
+					{passwordHint && (
+						<p class="password-hint">
+							<span class="password-hint-label">Hint</span>
+							{passwordHint}
+						</p>
+					)}
+					<div class="password-form">
+						<input type="password" id="password-input" placeholder="Enter password" autocomplete="off" />
+						<button id="password-submit">Unlock</button>
+					</div>
+					<p id="password-error" class="password-error">Incorrect password</p>
 				</div>
 			)}
 		</div>
@@ -238,7 +250,11 @@ const passwordHint = post.data.password_hint || '';
 					var password = inputEl.value;
 					if (!password) return;
 					unlock(password).catch(function () {
-						errorEl.style.display = '';
+						errorEl.classList.add('visible');
+						var form = promptEl.querySelector('.password-form');
+						form.classList.remove('shake');
+						void form.offsetWidth; // 重置动画，让连续输错也能再次抖动
+						form.classList.add('shake');
 					});
 				}
 
